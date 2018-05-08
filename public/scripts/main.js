@@ -1,7 +1,30 @@
 "use strict";
 
-var ohHey = "Hello World";
+/*
+Start with users quiz ask for their location(store), budget(product) and poison(product)
+Grab that data and store it in variables
+Get the product data and use the stored variables to get the data we need.
+Get the Product id and use that to find the Store
 
-console.log(ohHey);
 
-console.log("hello");
+*/
+
+// App
+var app = {};
+
+app.getProduct = function () {// Zena
+
+
+};
+
+app.getStore = function () {// Mikaela
+
+};
+
+app.init = function () {} // Everything gets called inside of this function
+
+
+// Document ready
+;$(function () {
+    app.init(); // <-- we don't need to touch this
+});
