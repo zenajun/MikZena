@@ -12,12 +12,12 @@ Get the Product id and use that to find the Store
 // App
 var app = {};
 
-app.getProduct = function () {// Zena
+app.getProduct = function () {// Mikaela
 
 
 };
 
-app.getStore = function () {// Mikaela
+app.getStore = function () {// Zena
 
 };
 

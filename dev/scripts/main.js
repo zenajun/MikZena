@@ -11,12 +11,12 @@ Get the Product id and use that to find the Store
 // App
 const app = {};
 
-app.getProduct = function() { // Zena
+app.getProduct = function() { // Mikaela
     
 
 }
 
-app.getStore = function()  { // Mikaela
+app.getStore = function()  { // Zena
 
 }
 
