@@ -1,7 +1,10 @@
 "use strict";
 
-var ohHey = "Hello World";
+// Start with users quiz ask for their location, budget and poison
 
-console.log(ohHey);
 
-console.log("hello");
+// App
+var app = {};
+
+// Document ready
+$(function () {});

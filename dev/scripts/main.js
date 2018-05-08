@@ -1,7 +1,12 @@
-const ohHey = "Hello World";
-
-console.log(ohHey);
+// Start with users quiz ask for their location, budget and poison
 
 
 
-console.log(`hello`);
+// App
+const app = {};
+
+
+// Document ready
+$(function() {
+
+});
