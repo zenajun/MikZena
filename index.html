@@ -9,10 +9,62 @@
 </head>
 <body>
 
-	<h1>Hello World!</h1>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ab iusto nisi ut velit fugit est aperiam laboriosam! Suscipit harum nihil neque nobis accusamus sapiente pariatur et, similique veritatis odit.</p>
-	<p>testing!!</p>
+	<h1>Drinks!</h1>
+	<h3>Need a drink? Choice is hard, let us help!</h3>
+	<p>All you need to do is/Just fill out a few questions and we'll pick a drink for you.</p>
+	<form action="#" class="userInput">
 
+		<!-- City Question -->
+		<div class="selectCity">
+			<h2>Where are you?</h2>
+			<label for="city">Pick a city</label>
+			<input type="text" placeholder="Toronto" name="question1" id="city" value="Toronto">
+		</div>
+
+		<!-- Price Question -->
+		<div class="selectPrice">
+			<h2>Budget!</h2>
+			<label for="cheap">$</label>
+			<input type="radio" name="question1" id="cheap" value="happy">
+
+			<label for="budget">$$</label>
+			<input type="radio" name="question1" id="budget" value="happy">
+
+			<label for="pricy">$$$</label>
+			<input type="radio" name="question1" id="pricy" value="happy">
+
+			<label for="expensive">$$$$</label>
+			<input type="radio" name="question1" id="expensive" value="happy">
+		</div>
+
+		<!-- Drink Question -->
+		<div class="selectDrink">
+			<h2>Poision!</h2>
+			<label for="beer">Beer</label>
+			<input type="radio" name="question1" id="beer" value="beer">
+
+			<label for="scotch">Scotch</label>
+			<input type="radio" name="question1" id="scotch" value="scotch">
+
+			<label for="wine">Wine</label>
+			<input type="radio" name="question1" id="wine" value="wine">
+
+			<label for="cider">Cider</label>
+			<input type="radio" name="question1" id="cider" value="cider">
+		</div>
+		
+		<!-- Submit Button -->
+		<input type="submit" value="Find me a drink!" class="submit">
+	</form>
+
+	<!-- Result Section -->
+	<section class="result">
+		<h2 class="userDrink">{ Drink }</h2>
+		<div class="userResult">
+			<p class="userPrice">{ Price }</p>
+			<p class="userImage">{ Img }</p>
+		</div>
+	</section>
 	
 	<!-- jQuery Script -->
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
