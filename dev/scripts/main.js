@@ -14,21 +14,40 @@ app.postal = 'm5s+2j6';
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function() { // Mikaela
+app.getProduct = function (product_id) { // Mikaela
   return $.ajax({
-    url: `http://lcboapi.com/products?`,
+    url: `http://lcboapi.com/products?${product_id}`,
     dataType: 'jsonp',
     method: 'GET',
     headers: 
       { Authorization: app.key},
-    data: {
-        primary_category: 'Beer'
-        }
     })
-  .then( (res) => {
-      console.log(`ok ${res}`);
+  .then( (drink) => {
+      console.log(drink);
     });
-}
+} // productid end
+
+app.getPrice = function (regular_price_in_cents) { // Mikaela
+    return $.ajax({
+        url: `http://lcboapi.com/products?${regular_price_in_cents}`,
+        dataType: 'jsonp',
+        method: 'GET',
+        headers:
+            { Authorization: app.key },
+    })
+    .then((budget) => {
+        console.log(budget);
+    });
+    if (getPrice() <= 1500) { 
+        console.log('cheap');
+    } else if (getPrice() <= 3000) {
+        console.log('budget');
+    } else if (getPrice() <= 10000) {
+        console.log('pricy');
+    } else if (getPrice() <= 100000) {
+        console.log('expensive');
+    };
+} // getprice end
 
 app.getStore = function(id) {
     return $.ajax({
@@ -57,14 +76,10 @@ app.getStores = function(geo)  { // Zena
        for (let i = 0; i < 5; i++) {
         //    console.log(store.result);
         let $store = store.result[i];
-        const $storeId = $store.$storeId
-        // console.log($store);
-        
         // console.log($store.name, $store.id);        
        }
-       
    });
-}
+} //postal code end
 
 app.events = function() {
     $('form').on('submit', function(e) {
@@ -72,18 +87,22 @@ app.events = function() {
         const $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
 
-        const getProduct = $('.selectDrink input[type="radio"]').val();
+        const getProduct = $('.selectDrink input[name='drink']').val();
         app.getProduct(getProduct);
         console.log(getProduct);
     
+        const getPrice = $('.selectPrice input[name='price']').val();
+        app.getPrice(getPrice);
+        console.log(getPrice);
     })
-}
+} //on click end
+
 
 app.init = function() {  // Everything gets called inside of this function
     app.events();
     app.getProduct();
-    app.getStore(511);    
-    
+    app.getPrice();
+    // app.getStore();    
 }
 
 // Document ready

@@ -15,20 +15,47 @@ app.postal = 'm5s+2j6';
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function () {
+app.getProduct = function (product_id) {
     // Mikaela
     return $.ajax({
-        url: 'http://lcboapi.com/products?',
+        url: 'http://lcboapi.com/products?' + product_id,
         dataType: 'jsonp',
         method: 'GET',
+<<<<<<< HEAD
         headers: { Authorization: app.key },
         data: {
             primary_category: 'Beer'
         }
     }).then(function (res) {
         console.log('ok ' + res);
+=======
+        headers: { Authorization: app.key }
+    }).then(function (drink) {
+        console.log(drink);
+>>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
     });
-};
+}; // productid end
+
+app.getPrice = function (regular_price_in_cents) {
+    // Mikaela
+    return $.ajax({
+        url: 'http://lcboapi.com/products?' + regular_price_in_cents,
+        dataType: 'jsonp',
+        method: 'GET',
+        headers: { Authorization: app.key }
+    }).then(function (budget) {
+        console.log(budget);
+    });
+    if (getPrice() <= 1500) {
+        console.log('cheap');
+    } else if (getPrice() <= 3000) {
+        console.log('budget');
+    } else if (getPrice() <= 10000) {
+        console.log('pricy');
+    } else if (getPrice() <= 100000) {
+        console.log('expensive');
+    };
+}; // getprice end
 
 app.getStore = function (id) {
     return $.ajax({
@@ -57,13 +84,16 @@ app.getStores = function (geo) {
         for (var i = 0; i < 5; i++) {
             //    console.log(store.result);
             var $store = store.result[i];
+<<<<<<< HEAD
             var $storeId = $store.$storeId;
             // console.log($store);
 
+=======
+>>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
             // console.log($store.name, $store.id);        
         }
     });
-};
+}; //postal code end
 
 app.events = function () {
     $('form').on('submit', function (e) {
@@ -71,17 +101,31 @@ app.events = function () {
         var $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
 
+<<<<<<< HEAD
         var getProduct = $('.selectDrink input[type="radio"]').val();
+=======
+        var getProduct = $('.selectDrink input[name=drink]').val();
+>>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
         app.getProduct(getProduct);
         console.log(getProduct);
+
+        var getPrice = $('.selectPrice input[name=price]').val();
+        app.getPrice(getPrice);
+        console.log(getPrice);
     });
-};
+}; //on click end
+
 
 app.init = function () {
     // Everything gets called inside of this function
     app.events();
     app.getProduct();
+<<<<<<< HEAD
     app.getStore(511);
+=======
+    app.getPrice();
+    // app.getStore();    
+>>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
 };
 
 // Document ready
