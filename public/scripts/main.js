@@ -48,7 +48,20 @@ app.getPrice = function (regular_price_in_cents) {
     };
 }; // getprice end
 
-app.getStore = function (geo) {
+app.getStore = function (id) {
+    return $.ajax({
+        url: 'http://lcboapi.com/products?store_id=' + id,
+        headers: {
+            Authorization: app.key
+        },
+        contentType: 'application/json',
+        dataType: 'jsonp'
+    }).then(function (res) {
+        console.log(res.result);
+    });
+};
+
+app.getStores = function (geo) {
     // Zena  
     return $.ajax({
         url: 'http://lcboapi.com/stores?&geo=' + geo,
@@ -71,15 +84,15 @@ app.events = function () {
     $('form').on('submit', function (e) {
         e.preventDefault();
         var $postalCode = $('#postalCode').val();
-        app.getStore($postalCode);
+        app.getStores($postalCode);
 
-        var getProduct = $('.selectDrink input[name=drink]').val();
-        app.getProduct(getProduct);
+        // const getPrice = $('.selectPrice input[name='price']').val();
+        // app.getPrice(getPrice);
+        // console.log(getPrice);
+
+        var getProduct = $('.selectDrink input[type="radio"]:checked').attr('value');
+        // app.getProduct(getProduct);
         console.log(getProduct);
-
-        var getPrice = $('.selectPrice input[name=price]').val();
-        app.getPrice(getPrice);
-        console.log(getPrice);
     });
 }; //on click end
 
