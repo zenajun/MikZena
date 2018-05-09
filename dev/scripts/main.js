@@ -16,7 +16,7 @@ app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyT
 
 app.getProduct = function (product_id) { // Mikaela
   return $.ajax({
-    url: `http://lcboapi.com/products?${product_id}`,
+    url: `http://lcboapi.com/products?q=${product_id}`,
     dataType: 'jsonp',
     method: 'GET',
     headers: 
@@ -38,15 +38,15 @@ app.getPrice = function (regular_price_in_cents) { // Mikaela
     .then((budget) => {
         console.log(budget);
     });
-    if (getPrice() <= 1500) { 
-        console.log('cheap');
-    } else if (getPrice() <= 3000) {
-        console.log('budget');
-    } else if (getPrice() <= 10000) {
-        console.log('pricy');
-    } else if (getPrice() <= 100000) {
-        console.log('expensive');
-    };
+    // if (getPrice() <= 1500) { 
+    //     console.log('cheap');
+    // } else if (getPrice() <= 3000) {
+    //     console.log('budget');
+    // } else if (getPrice() <= 10000) {
+    //     console.log('pricy');
+    // } else if (getPrice() <= 100000) {
+    //     console.log('expensive');
+    // };
 } // getprice end
 
 app.getStore = function(id) {
@@ -76,7 +76,7 @@ app.getStores = function(geo)  { // Zena
        for (let i = 0; i < 5; i++) {
         //    console.log(store.result);
         let $store = store.result[i];
-        // console.log($store.name, $store.id);        
+        console.log($store.name, $store.id);        
        }
    });
 } //postal code end
@@ -87,13 +87,13 @@ app.events = function() {
         const $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
         
-        // const getPrice = $('.selectPrice input[name='price']').val();
-        // app.getPrice(getPrice);
-        // console.log(getPrice);
+        const selectedPrice = $('.selectPrice input[name="radio"]:checked').val();
+        app.getPrice(selectedPrice);
+        console.log(getPrice);
 
-        const getProduct = $('.selectDrink input[type="radio"]:checked').attr('value');
-        // app.getProduct(getProduct);
-        console.log(getProduct);
+        const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        app.getProduct(selectedDrink);
+        console.log(selectedDrink);
     });
 } //on click end
 
