@@ -18,14 +18,15 @@ app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyT
 app.getProduct = function () {
     // Mikaela
     return $.ajax({
-        url: 'http://lcboapi.com/products',
-        headers: {
-            Authorization: app.key
-        },
-        contentType: 'application/json',
-        dataType: 'jsonp'
-    }).then(function (products) {
-        console.log(products);
+        url: 'http://lcboapi.com/products?',
+        dataType: 'jsonp',
+        method: 'GET',
+        headers: { Authorization: app.key },
+        data: {
+            primary_category: 'Beer'
+        }
+    }).then(function (res) {
+        console.log(res);
     });
 };
 
@@ -53,12 +54,18 @@ app.events = function () {
         e.preventDefault();
         var $postalCode = $('#postalCode').val();
         app.getStore($postalCode);
+
+        var getProduct = $('.selectDrink input[type="radio"]').val();
+        //5 passin the value from the method getJokes to 
+        app.getProduct(getProduct);
+        console.log(getProduct);
     });
 };
 
 app.init = function () {
     // Everything gets called inside of this function
     app.events();
+    app.getProduct();
     // app.getStore();    
 };
 

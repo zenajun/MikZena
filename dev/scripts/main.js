@@ -12,12 +12,22 @@ Get the Product id and use that to find the Store
 const app = {};
 app.postal = 'm5s+2j6';
 
-
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
 app.getProduct = function() { // Mikaela
-
-
+  return $.ajax({
+    url: `http://lcboapi.com/products?`,
+    dataType: 'jsonp',
+    method: 'GET',
+    headers: 
+      { Authorization: app.key},
+    data: {
+        primary_category: 'Beer'
+        }
+    })
+  .then( (res) => {
+      console.log(res);
+    });
 }
 
 app.getStore = function(geo)  { // Zena  
@@ -44,12 +54,17 @@ app.events = function() {
         e.preventDefault();        
         const $postalCode = $('#postalCode').val();
         app.getStore($postalCode);
-        
+
+        const getProduct = $('.selectDrink input[type="radio"]').val();
+        app.getProduct(getProduct);
+        console.log(getProduct);
+    
     })
 }
 
 app.init = function() {  // Everything gets called inside of this function
     app.events();
+    app.getProduct();
     // app.getStore();    
 }
 
