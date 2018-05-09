@@ -11,12 +11,25 @@ Get the Product id and use that to find the Store
 // App
 const app = {};
 
-app.getProduct = function() { // Zena
+app.getProduct = function() { // Mikaela
+  return $.ajax({
+    url: 'http://lcboapi.com/products',
+    dataType: 'jsonp',
+    method: 'GET',
+    headers: 
+      { Authorization: Token = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k'},
+    data: {
+      // q: 
+    },
+    })
+  .then( (res) => {
+    console.log(res);
     
+  });
 
 }
 
-app.getStore = function()  { // Mikaela
+app.getStore = function()  { // Zena
 
 }
 
