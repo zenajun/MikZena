@@ -86,15 +86,15 @@ app.events = function() {
         e.preventDefault();        
         const $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
+        
+        // const getPrice = $('.selectPrice input[name='price']').val();
+        // app.getPrice(getPrice);
+        // console.log(getPrice);
 
-        const getProduct = $('.selectDrink input[name='drink']').val();
-        app.getProduct(getProduct);
+        const getProduct = $('.selectDrink input[type="radio"]:checked').attr('value');
+        // app.getProduct(getProduct);
         console.log(getProduct);
-    
-        const getPrice = $('.selectPrice input[name='price']').val();
-        app.getPrice(getPrice);
-        console.log(getPrice);
-    })
+    });
 } //on click end
 
 

@@ -21,18 +21,9 @@ app.getProduct = function (product_id) {
         url: 'http://lcboapi.com/products?' + product_id,
         dataType: 'jsonp',
         method: 'GET',
-<<<<<<< HEAD
-        headers: { Authorization: app.key },
-        data: {
-            primary_category: 'Beer'
-        }
-    }).then(function (res) {
-        console.log('ok ' + res);
-=======
         headers: { Authorization: app.key }
     }).then(function (drink) {
         console.log(drink);
->>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
     });
 }; // productid end
 
@@ -84,12 +75,6 @@ app.getStores = function (geo) {
         for (var i = 0; i < 5; i++) {
             //    console.log(store.result);
             var $store = store.result[i];
-<<<<<<< HEAD
-            var $storeId = $store.$storeId;
-            // console.log($store);
-
-=======
->>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
             // console.log($store.name, $store.id);        
         }
     });
@@ -101,17 +86,13 @@ app.events = function () {
         var $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
 
-<<<<<<< HEAD
-        var getProduct = $('.selectDrink input[type="radio"]').val();
-=======
-        var getProduct = $('.selectDrink input[name=drink]').val();
->>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
-        app.getProduct(getProduct);
-        console.log(getProduct);
+        // const getPrice = $('.selectPrice input[name='price']').val();
+        // app.getPrice(getPrice);
+        // console.log(getPrice);
 
-        var getPrice = $('.selectPrice input[name=price]').val();
-        app.getPrice(getPrice);
-        console.log(getPrice);
+        var getProduct = $('.selectDrink input[type="radio"]:checked').attr('value');
+        // app.getProduct(getProduct);
+        console.log(getProduct);
     });
 }; //on click end
 
@@ -120,12 +101,8 @@ app.init = function () {
     // Everything gets called inside of this function
     app.events();
     app.getProduct();
-<<<<<<< HEAD
-    app.getStore(511);
-=======
     app.getPrice();
     // app.getStore();    
->>>>>>> 3b5abde1d0082d41a7636a54af3f9d200ce54ed8
 };
 
 // Document ready
