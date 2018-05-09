@@ -26,11 +26,25 @@ app.getProduct = function() { // Mikaela
         }
     })
   .then( (res) => {
-      console.log(res);
+      console.log(`ok ${res}`);
     });
 }
 
-app.getStore = function(geo)  { // Zena  
+app.getStore = function(id) {
+    return $.ajax({
+        url: `http://lcboapi.com/products?store_id=${id}`,
+        headers: {
+            Authorization: app.key
+        },
+        contentType: 'application/json',
+        dataType: 'jsonp'
+    }).then(function (res) {
+        console.log(res.result);      
+
+    });
+}
+
+app.getStores = function(geo)  { // Zena  
    return $.ajax({
        url: `http://lcboapi.com/stores?&geo=${geo}`,
        headers: {
@@ -43,7 +57,10 @@ app.getStore = function(geo)  { // Zena
        for (let i = 0; i < 5; i++) {
         //    console.log(store.result);
         let $store = store.result[i];
-        console.log($store.name, $store.id);        
+        const $storeId = $store.$storeId
+        // console.log($store);
+        
+        // console.log($store.name, $store.id);        
        }
        
    });
@@ -53,7 +70,7 @@ app.events = function() {
     $('form').on('submit', function(e) {
         e.preventDefault();        
         const $postalCode = $('#postalCode').val();
-        app.getStore($postalCode);
+        app.getStores($postalCode);
 
         const getProduct = $('.selectDrink input[type="radio"]').val();
         app.getProduct(getProduct);
@@ -65,7 +82,8 @@ app.events = function() {
 app.init = function() {  // Everything gets called inside of this function
     app.events();
     app.getProduct();
-    // app.getStore();    
+    app.getStore(511);    
+    
 }
 
 // Document ready
