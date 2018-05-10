@@ -16,21 +16,29 @@ app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyT
 
 app.getProduct = function (store, drink) { // Mikaela
   return $.ajax({
-      url: `http://lcboapi.com/products?&primary_category=Wine&per_page=5&store_id=511`,
+    url: `http://lcboapi.com/products?&store_id=511&per_page=100`,
     dataType: 'jsonp',
     method: 'GET',
     headers: 
       { Authorization: app.key}
     })
   .then( (drink) => {
+      console.log(drink);
+      
     //   console.log(drink.result);
-      const listOfDrinks = drink.result;
-      listOfDrinks.filter((drink) => {
-        console.log(drink);
-        if (drink.price_in_cents > 5000) {
-            // console.log(drink);
+        const listOfDrinks = drink.result;
+        const drinkChoices = [];
+        listOfDrinks.filter((drink) => {
+        // console.log(drink.primary_category);
+        // if (drink.primary_category === 'Wine') {
+        //     // console.log(drink.secondary_category);
             
+        // }
+        if (drink.primary_category === "Wine" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
+            drinkChoices.push(drink)           
         }
+        console.log(drinkChoices);
+        
         
         
       });
