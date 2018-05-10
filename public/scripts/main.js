@@ -15,25 +15,35 @@ app.postal = 'm5s+2j6';
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function (product_id) {
+app.getProduct = function (store, drink) {
     // Mikaela
     return $.ajax({
-        url: 'http://lcboapi.com/products?q=' + product_id,
+        url: 'http://lcboapi.com/products?primary_category=Wine&per_page=100&store_id=511',
         dataType: 'jsonp',
         method: 'GET',
         headers: { Authorization: app.key }
     }).then(function (drink) {
-        console.log(drink);
+        console.log(drink.result);
+        var listOfDrinks = drink.result;
+        listOfDrinks.filter(function (drink) {
+            console.log(drink);
+            if (drink.price_in_cents > 5000) {
+                // console.log(drink);  
+            }
+        });
     });
 }; // productid end
+
 
 app.getPrice = function (regular_price_in_cents) {
     // Mikaela
     return $.ajax({
-        url: 'http://lcboapi.com/products?' + regular_price_in_cents,
+        url: 'http://lcboapi.com/products?per_page=100' + regular_price_in_cents,
         dataType: 'jsonp',
         method: 'GET',
-        headers: { Authorization: app.key }
+        headers: {
+            Authorization: app.key
+        }
     }).then(function (budget) {
         console.log(budget);
     });
@@ -71,12 +81,9 @@ app.getStores = function (geo) {
         contentType: 'application/json',
         dataType: 'jsonp'
     }).then(function (store) {
-        // grab the first 5 nearest LCBO stores
-        for (var i = 0; i < 5; i++) {
-            //    console.log(store.result);
-            var $store = store.result[i];
-            console.log($store.name, $store.id);
-        }
+        // grab the nearest LCBO stores       
+        var $store = store.result[0];
+        console.log($store.name, $store.id);
     });
 }; //postal code end
 
@@ -88,7 +95,7 @@ app.events = function () {
 
         var selectedPrice = $('.selectPrice input[name="radio"]:checked').val();
         app.getPrice(selectedPrice);
-        console.log(getPrice);
+        console.log(selectedPrice);
 
         var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
