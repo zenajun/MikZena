@@ -21,20 +21,30 @@ app.getProduct = function (store, drink) {
       { Authorization: app.key }
     })
   .then( (drink) => {
-      console.log(drink.result);
-      const listOfDrinks = drink.result;
-      listOfDrinks.filter((drink) => {
-        console.log(drink);
-        if (drink .price_in_cents > 5000) {
-            // console.log(drink);  
-        } 
+    //   console.log(drink);
+      
+    //   console.log(drink.result);
+        const listOfDrinks = drink.result;
+        const drinkChoices = [];
+        listOfDrinks.filter((drink) => {
+        // console.log(drink.primary_category);
+        // if (drink.primary_category === 'Wine') {
+        //     // console.log(drink.secondary_category);
+            
+        // }
+        if (drink.primary_category === "Beer" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
+            drinkChoices.push(drink)           
+        }
+        // console.log(drinkChoices);
+        
+        
+        
       });
     });
 } // productid end
 
-
-app.getStores = function(geo)  { 
     // this finds the closest store based on postal code, get the  store on submit of the app.events
+app.getStores = function(geo)  { 
    return $.ajax({
        url: `http://lcboapi.com/stores?&geo=${geo}`,
        headers: {
@@ -42,24 +52,24 @@ app.getStores = function(geo)  {
        },
        contentType: 'application/json',
        dataType: 'jsonp'
-   }).then(function (store) {
-       // grab the nearest LCBO stores       
-       let $store = store.result[0];
+   }).then(function (store) {            
+       const $store = store.result[0];  // Get the nearest store
        console.log($store.name, $store.id);        
        
    });
-} //postal code end
+} 
 
 app.events = function() {
     $('form').on('submit', function(e) {
         e.preventDefault();        
+        //Gives us user postal code and finds the closest store
         const $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
         
         // const selectedPrice = $('.selectPrice input[name="radio"]:checked').val();
         // app.getPrice(selectedPrice);
         // console.log(selectedPrice);
-
+        
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
         console.log(selectedDrink);
@@ -69,8 +79,7 @@ app.events = function() {
 
 app.init = function() {  // Everything gets called inside of this function
     app.events();
-    app.getProduct();
-    app.getPrice();
+    app.getProduct();  
 }
 
 // Document ready
