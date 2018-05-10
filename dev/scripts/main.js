@@ -3,6 +3,7 @@ Start with users quiz ask for their location(store), budget(product) and poison(
 Grab that data and store it in variables
 Get the product data and use the stored variables to get the data we need.
 Get the Product id and use that to find the Store
+
 */
 
 // App
@@ -10,13 +11,14 @@ const app = {};
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function (store, drink) { // Mikaela
+app.getProduct = function (store, drink) { 
+    // filter through the whole product array
   return $.ajax({
-    url: `http://lcboapi.com/products?&store_id=511&per_page=100`,
+      url: `http://lcboapi.com/products?primary_category=Wine&per_page=100&=511`,
     dataType: 'jsonp',
     method: 'GET',
     headers: 
-      { Authorization: app.key}
+      { Authorization: app.key }
     })
   .then( (drink) => {
     //   console.log(drink);
@@ -41,8 +43,7 @@ app.getProduct = function (store, drink) { // Mikaela
     });
 } // productid end
 
-
-
+    // this finds the closest store based on postal code, get the  store on submit of the app.events
 app.getStores = function(geo)  { 
    return $.ajax({
        url: `http://lcboapi.com/stores?&geo=${geo}`,
@@ -61,10 +62,14 @@ app.getStores = function(geo)  {
 app.events = function() {
     $('form').on('submit', function(e) {
         e.preventDefault();        
+        //Gives us user postal code and finds the closest store
         const $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
-
-
+        
+        // const selectedPrice = $('.selectPrice input[name="radio"]:checked').val();
+        // app.getPrice(selectedPrice);
+        // console.log(selectedPrice);
+        
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
         console.log(selectedDrink);
@@ -74,9 +79,7 @@ app.events = function() {
 
 app.init = function() {  // Everything gets called inside of this function
     app.events();
-    app.getProduct();
-    app.getPrice();
-  
+    app.getProduct();  
 }
 
 // Document ready
