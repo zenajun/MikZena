@@ -4,30 +4,23 @@ Grab that data and store it in variables
 Get the product data and use the stored variables to get the data we need.
 Get the Product id and use that to find the Store
 
-
 */
-
 
 // App
 const app = {};
-app.postal = 'm5s+2j6';
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function (store, drink) { // Mikaela
+app.getProduct = function (store, drink) { 
+    // filter through the whole product array
   return $.ajax({
-<<<<<<< HEAD
-      url: `http://lcboapi.com/products?primary_category=Wine&per_page=100&store_id=511`,
-=======
-    url: `http://lcboapi.com/products?&store_id=511&per_page=100`,
->>>>>>> 9b79c8e1e8f691696555215bd765cc84c59b523f
+      url: `http://lcboapi.com/products?primary_category=Wine&per_page=100&=511`,
     dataType: 'jsonp',
     method: 'GET',
     headers: 
-      { Authorization: app.key}
+      { Authorization: app.key }
     })
   .then( (drink) => {
-<<<<<<< HEAD
       console.log(drink.result);
       const listOfDrinks = drink.result;
       listOfDrinks.filter((drink) => {
@@ -35,61 +28,13 @@ app.getProduct = function (store, drink) { // Mikaela
         if (drink .price_in_cents > 5000) {
             // console.log(drink);  
         } 
-=======
-      console.log(drink);
-      
-    //   console.log(drink.result);
-        const listOfDrinks = drink.result;
-        const drinkChoices = [];
-        listOfDrinks.filter((drink) => {
-        // console.log(drink.primary_category);
-        // if (drink.primary_category === 'Wine') {
-        //     // console.log(drink.secondary_category);
-            
-        // }
-        if (drink.primary_category === "Wine" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
-            drinkChoices.push(drink)           
-        }
-        console.log(drinkChoices);
-        
-        
-        
->>>>>>> 9b79c8e1e8f691696555215bd765cc84c59b523f
       });
     });
 } // productid end
 
 
-app.getPrice = function (regular_price_in_cents) { // Mikaela
-    return $.ajax({
-        url: `http://lcboapi.com/products?per_page=100${regular_price_in_cents}`,
-        dataType: 'jsonp',
-        method: 'GET',
-        headers: { 
-            Authorization: app.key 
-        }
-    })
-    .then((budget) => {
-        console.log(budget);
-    });
-
-} // getprice end
-
-app.getStore = function(id) {
-    return $.ajax({
-        url: `http://lcboapi.com/products?store_id=${id}`,
-        headers: {
-            Authorization: app.key
-        },
-        contentType: 'application/json',
-        dataType: 'jsonp'
-    }).then(function (res) {
-        console.log(res.result);      
-
-    });
-}
-
-app.getStores = function(geo)  { // Zena  
+app.getStores = function(geo)  { 
+    // this finds the closest store based on postal code, get the  store on submit of the app.events
    return $.ajax({
        url: `http://lcboapi.com/stores?&geo=${geo}`,
        headers: {
@@ -111,9 +56,9 @@ app.events = function() {
         const $postalCode = $('#postalCode').val();
         app.getStores($postalCode);
         
-        const selectedPrice = $('.selectPrice input[name="radio"]:checked').val();
-        app.getPrice(selectedPrice);
-        console.log(selectedPrice);
+        // const selectedPrice = $('.selectPrice input[name="radio"]:checked').val();
+        // app.getPrice(selectedPrice);
+        // console.log(selectedPrice);
 
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
@@ -126,7 +71,6 @@ app.init = function() {  // Everything gets called inside of this function
     app.events();
     app.getProduct();
     app.getPrice();
-    // app.getStore();    
 }
 
 // Document ready
