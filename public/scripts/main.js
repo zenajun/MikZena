@@ -34,7 +34,7 @@ app.getProduct = function (store, drink) {
             if (drink.primary_category === "Beer" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
                 drinkChoices.push(drink);
             }
-            // console.log(drinkChoices);
+            // console.log(drinkChoices);     
 
         });
     });
@@ -59,11 +59,13 @@ app.events = function () {
     $('form').on('submit', function (e) {
         e.preventDefault();
         var $postalCode = $('#postalCode').val();
+        console.log($postalCode);
+
         app.getStores($postalCode);
 
-        var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
-        app.getProduct(selectedDrink);
-        console.log(selectedDrink);
+        // const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        // app.getProduct(selectedDrink);
+        // console.log(selectedDrink);
     });
 }; //on click end
 
@@ -71,8 +73,7 @@ app.events = function () {
 app.init = function () {
     // Everything gets called inside of this function
     app.events();
-    app.getProduct();
-    app.getPrice();
+    // app.getProduct();  
 };
 
 // Document ready
