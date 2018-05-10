@@ -30,14 +30,14 @@ app.getProduct = function (store, drink) { // Mikaela
         const drinkChoices = [];
         listOfDrinks.filter((drink) => {
         // console.log(drink.primary_category);
-        if (drink.primary_category === 'Spirits') {
-            console.log(drink.secondary_category);
+        // if (drink.primary_category === 'Wine') {
+        //     // console.log(drink.secondary_category);
             
-        }
-        if (drink.primary_category === "Wine" && drink.regular_price_in_cents > 1500 && drinkChoices.length < 5) {
+        // }
+        if (drink.primary_category === "Wine" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
             drinkChoices.push(drink)           
         }
-        // console.log(drinkChoices);
+        console.log(drinkChoices);
         
         
         
