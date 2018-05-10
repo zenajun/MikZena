@@ -18,18 +18,40 @@ app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyT
 app.getProduct = function (store, drink) {
     // Mikaela
     return $.ajax({
+<<<<<<< HEAD
         url: 'http://lcboapi.com/products?primary_category=Wine&per_page=100&store_id=511',
+=======
+        url: 'http://lcboapi.com/products?&store_id=511&per_page=100',
+>>>>>>> 9b79c8e1e8f691696555215bd765cc84c59b523f
         dataType: 'jsonp',
         method: 'GET',
         headers: { Authorization: app.key }
     }).then(function (drink) {
+<<<<<<< HEAD
         console.log(drink.result);
+=======
+        console.log(drink);
+
+        //   console.log(drink.result);
+>>>>>>> 9b79c8e1e8f691696555215bd765cc84c59b523f
         var listOfDrinks = drink.result;
+        var drinkChoices = [];
         listOfDrinks.filter(function (drink) {
+<<<<<<< HEAD
             console.log(drink);
             if (drink.price_in_cents > 5000) {
                 // console.log(drink);  
+=======
+            // console.log(drink.primary_category);
+            // if (drink.primary_category === 'Wine') {
+            //     // console.log(drink.secondary_category);
+
+            // }
+            if (drink.primary_category === "Wine" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
+                drinkChoices.push(drink);
+>>>>>>> 9b79c8e1e8f691696555215bd765cc84c59b523f
             }
+            console.log(drinkChoices);
         });
     });
 }; // productid end
