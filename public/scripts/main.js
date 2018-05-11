@@ -10,6 +10,7 @@ Get the Product id and use that to find the Store
 // object with two arrays, the values of the selections that users can make
 
 // App
+
 var app = {};
 
 app.userOptions = {
@@ -100,7 +101,7 @@ app.events = function () {
     $('form').on('submit', function (e) {
         e.preventDefault();
         //Gives us user postal code and finds the closest store
-        const $postalCode = $('#postalCode').val().replace(' ', '+');
+        var $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
         // console.log($postalCode);
 
@@ -108,7 +109,7 @@ app.events = function () {
         app.getProduct(app.selectedPrice);
         // console.log(selectedPrice);
 
-        let selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
         // console.log(selectedDrink);
 
@@ -118,7 +119,7 @@ app.events = function () {
 
 // based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
 app.beerOrWineChoice = function (wineorbeer) {
-    let beverageChoice = [];
+    var beverageChoice = [];
     if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
         beverageChoice.push(app.userOptions['wine']);
     } else {
