@@ -54,18 +54,20 @@ console.log(app.finalOptions);
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function (store) {
+app.getProduct = function (store, drink) {
     // filter through the whole product array
     return $.ajax({
-        url: 'http://lcboapi.com/products?&per_page=100&=' + store,
+        url: 'http://lcboapi.com/products?primary_category=Wine&per_page=100&=511',
         dataType: 'jsonp',
         method: 'GET',
-        headers: { Authorization: app.key }
-    }).then(function (res) {
-        console.log(res.result);
+        headers: {
+            Authorization: app.key
+        }
+    }).then(function (drink) {
+        //   console.log(drink);
 
-        //   console.log(drink.result);
-        var listOfDrinks = res.result;
+        console.log(drink.result);
+        var listOfDrinks = drink.result;
         var drinkChoices = [];
         //filter through all the drink options and the find the 5 that match the parameters and push into the new array
         listOfDrinks.filter(function (drink) {
@@ -93,9 +95,6 @@ app.getStores = function (geo) {
     }).then(function (store) {
         var $store = store.result[0]; // Get the nearest store
         //    console.log($store.name, $store.id);        
-
-        console.log(store.id);
-        app.getProduct(store.id);
     });
 };
 
@@ -148,8 +147,8 @@ app.matchingChoice = function (choice) {
 
 app.init = function () {
     // Everything gets called inside of this function
-    // app.events();
-    app.getProduct(685);
+    app.events();
+    app.getProduct();
 };
 
 // Document ready
