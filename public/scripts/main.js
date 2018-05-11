@@ -130,7 +130,7 @@ app.events = function () {
 
 =======
         //Gives us user postal code and finds the closest store
-        var $postalCode = $('#postalCode').val().replace(' ', '+');
+        const $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
         // console.log($postalCode);
 
@@ -139,7 +139,7 @@ app.events = function () {
         // console.log(selectedPrice);
 >>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
 
-        var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        let selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
         // console.log(selectedDrink);
 
@@ -149,7 +149,7 @@ app.events = function () {
 
 // based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
 app.beerOrWineChoice = function (wineorbeer) {
-    var beverageChoice = [];
+    let beverageChoice = [];
     if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
         beverageChoice.push(app.userOptions['wine']);
     } else {
