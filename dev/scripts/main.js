@@ -75,23 +75,6 @@ app.getProduct = function (store) {
     console.log(res.result);
     
       
-<<<<<<< HEAD
-      console.log(res.result);
-        const listOfDrinks = res.result;
-        // const drinkChoices = [];
-        listOfDrinks.filter((drink) => {
-        // console.log(drink.primary_category);
-        if (drink.primary_category === 'Ciders') {
-            console.log(drink.price_in_cents);
-            
-        }
-        // if (drink.primary_category === "Beer" ) {
-        //     drinkChoices.push(drink)           
-        // }
-        // console.log(drinkChoices);     
-        
-        
-=======
     //   console.log(drink.result);
         const listOfDrinks = drink.result;
         const drinkChoices = [];
@@ -106,7 +89,6 @@ app.getProduct = function (store) {
 
         }
   
->>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
       });
     });
 } // productid end
@@ -120,17 +102,9 @@ app.getStores = function(geo)  {
        },
        contentType: 'application/json',
        dataType: 'jsonp'
-<<<<<<< HEAD
-   }).then(function (res) {     
-
-              
-       const store = res.result[0];  // Get the nearest store
-       console.log(store);
-=======
    }).then(function (store) {            
        const $store = store.result[0];  // Get the nearest store
     //    console.log($store.name, $store.id);        
->>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
        
        console.log(store.id);        
        app.getProduct(store.id)
@@ -139,12 +113,6 @@ app.getStores = function(geo)  {
 
 app.events = function() {
     $('form').on('submit', function(e) {
-<<<<<<< HEAD
-        e.preventDefault();          
-        const $postalCode = $('#postalCode').val().replace(' ', '+'); // Grab users postal code        
-        app.getStores($postalCode); // Finds the closest store
-
-=======
         e.preventDefault();        
         //Gives us user postal code and finds the closest store
         const $postalCode = $('#postalCode').val().replace(' ', '+');
@@ -154,7 +122,6 @@ app.events = function() {
         app.selectedPrice = $('.selectPrice input[type="radio"]:checked').val();
         app.getProduct(app.selectedPrice);
         // console.log(selectedPrice);
->>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
 
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
