@@ -58,6 +58,7 @@ app.userOptions = {
 }
 
 app.finalOptions = [];
+console.log(app.finalOptions);
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
@@ -113,7 +114,7 @@ app.events = function() {
         //Gives us user postal code and finds the closest store
         const $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
-        console.log($postalCode);
+        // console.log($postalCode);
 
         app.selectedPrice = $('.selectPrice input[type="radio"]:checked').val();
         app.getProduct(app.selectedPrice);
@@ -138,19 +139,25 @@ app.beerOrWineChoice = function(wineorbeer) {
     }
     // passing array of bevy choice into this
     app.matchingChoice(beverageChoice[0]);  
+    // console.log(beverageChoice[0]);
 }
 
 // beverage choice turned into choice
 // we looped through the bevychoice and to find the first item in the array, drink and then we matched it with the users choice and pulled our objects info
-app.matchingChoice = function(choice) {    
+app.matchingChoice = function(choice) {   
+     
     for (let i = 0; i < choice.length; i = i + 1 ) {
         const userChoice = choice[i].option;
     
         if (userChoice === app.selectedPrice ) {
             app.finalOptions.push(choice[i]);
         }
+        // console.log(choice[i]);
     }
+    
 }
+
+
 
 app.init = function() {  // Everything gets called inside of this function
     app.events();
