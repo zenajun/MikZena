@@ -5,6 +5,7 @@ Start with users quiz ask for their location(store), budget(product) and poison(
 Grab that data and store it in variables
 Get the product data and use the stored variables to get the data we need.
 Get the Product id and use that to find the Store
+
 */
 
 // App
@@ -12,35 +13,34 @@ var app = {};
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function (store, drink) {
-    // Mikaela
+app.getProduct = function (store) {
+    // filter through the whole product array
     return $.ajax({
-        url: 'http://lcboapi.com/products?&store_id=511&per_page=100',
+        url: 'http://lcboapi.com/products?&per_page=100&=' + store,
         dataType: 'jsonp',
         method: 'GET',
         headers: { Authorization: app.key }
-    }).then(function (drink) {
-        //   console.log(drink);
+    }).then(function (res) {
+        console.log(res.result);
 
-        //   console.log(drink.result);
-        var listOfDrinks = drink.result;
-        var drinkChoices = [];
+        console.log(res.result);
+        var listOfDrinks = res.result;
+        // const drinkChoices = [];
         listOfDrinks.filter(function (drink) {
             // console.log(drink.primary_category);
-            // if (drink.primary_category === 'Wine') {
-            //     // console.log(drink.secondary_category);
-
-            // }
-            if (drink.primary_category === "Beer" && drink.regular_price_in_cents > 5000 && drinkChoices.length < 5) {
-                drinkChoices.push(drink);
+            if (drink.primary_category === 'Ciders') {
+                console.log(drink.price_in_cents);
             }
+            // if (drink.primary_category === "Beer" ) {
+            //     drinkChoices.push(drink)           
+            // }
             // console.log(drinkChoices);     
 
         });
     });
 }; // productid end
 
-
+// this finds the closest store based on postal code, get the  store on submit of the app.events
 app.getStores = function (geo) {
     return $.ajax({
         url: 'http://lcboapi.com/stores?&geo=' + geo,
@@ -49,31 +49,34 @@ app.getStores = function (geo) {
         },
         contentType: 'application/json',
         dataType: 'jsonp'
-    }).then(function (store) {
-        var $store = store.result[0]; // Get the nearest store
-        console.log($store.name, $store.id);
+    }).then(function (res) {
+
+        var store = res.result[0]; // Get the nearest store
+        console.log(store);
+
+        console.log(store.id);
+        app.getProduct(store.id);
     });
 };
 
 app.events = function () {
     $('form').on('submit', function (e) {
         e.preventDefault();
-        var $postalCode = $('#postalCode').val();
-        console.log($postalCode);
+        var $postalCode = $('#postalCode').val().replace(' ', '+'); // Grab users postal code        
+        app.getStores($postalCode); // Finds the closest store
 
-        app.getStores($postalCode);
 
-        // const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
-        // app.getProduct(selectedDrink);
-        // console.log(selectedDrink);
+        var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        app.getProduct(selectedDrink);
+        console.log(selectedDrink);
     });
 }; //on click end
 
 
 app.init = function () {
     // Everything gets called inside of this function
-    app.events();
-    // app.getProduct();  
+    // app.events();
+    app.getProduct(685);
 };
 
 // Document ready
