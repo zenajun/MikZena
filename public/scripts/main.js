@@ -10,7 +10,6 @@ Get the Product id and use that to find the Store
 // object with two arrays, the values of the selections that users can make
 
 // App
-
 var app = {};
 
 app.userOptions = {

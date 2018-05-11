@@ -1,5 +1,3 @@
-'use strict';
-
 /*
 Start with users quiz ask for their location(store), budget(product) and poison(product)
 Grab that data and store it in variables
@@ -10,7 +8,7 @@ Get the Product id and use that to find the Store
 // object with two arrays, the values of the selections that users can make
 
 // App
-let app = {};
+const app = {};
 
 app.userOptions = {
     wine: [{
@@ -91,7 +89,7 @@ app.getStores = function (geo) {
         contentType: 'application/json',
         dataType: 'jsonp'
     }).then(function (store) {
-        let $store = store.result[0]; // Get the nearest store
+        const $store = store.result[0]; // Get the nearest store
         //    console.log($store.name, $store.id);        
     });
 };
@@ -108,7 +106,7 @@ app.events = function () {
         app.getProduct(app.selectedPrice);
         // console.log(selectedPrice);
 
-        let selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
         // console.log(selectedDrink);
 
@@ -118,7 +116,7 @@ app.events = function () {
 
 // based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
 app.beerOrWineChoice = function (wineorbeer) {
-    let beverageChoice = [];
+    const beverageChoice = [];
     if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
         beverageChoice.push(app.userOptions['wine']);
     } else {
@@ -134,7 +132,7 @@ app.beerOrWineChoice = function (wineorbeer) {
 app.matchingChoice = function (choice) {
 
     for (let i = 0; i < choice.length; i = i + 1) {
-        let userChoice = choice[i].option;
+        const userChoice = choice[i].option;
 
         if (userChoice === app.selectedPrice) {
             app.finalOptions.push(choice[i]);
