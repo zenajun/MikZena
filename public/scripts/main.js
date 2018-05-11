@@ -64,22 +64,8 @@ app.getProduct = function (store) {
     }).then(function (res) {
         console.log(res.result);
 
-<<<<<<< HEAD
-        console.log(res.result);
-        var listOfDrinks = res.result;
-        // const drinkChoices = [];
-        listOfDrinks.filter(function (drink) {
-            // console.log(drink.primary_category);
-            if (drink.primary_category === 'Ciders') {
-                console.log(drink.price_in_cents);
-            }
-            // if (drink.primary_category === "Beer" ) {
-            //     drinkChoices.push(drink)           
-            // }
-            // console.log(drinkChoices);     
-=======
         //   console.log(drink.result);
-        var listOfDrinks = drink.result;
+        var listOfDrinks = res.result;
         var drinkChoices = [];
         //filter through all the drink options and the find the 5 that match the parameters and push into the new array
         listOfDrinks.filter(function (drink) {
@@ -89,7 +75,6 @@ app.getProduct = function (store) {
 
             } else if (drink.primary_category === 'Wine' && drink.secondary_category === 'White Wine') {
                 // console.log(drink.secondary_category);
->>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
 
             }
         });
@@ -105,41 +90,28 @@ app.getStores = function (geo) {
         },
         contentType: 'application/json',
         dataType: 'jsonp'
-<<<<<<< HEAD
-    }).then(function (res) {
-
-        var store = res.result[0]; // Get the nearest store
-        console.log(store);
-
-        console.log(store.id);
-        app.getProduct(store.id);
-=======
     }).then(function (store) {
         var $store = store.result[0]; // Get the nearest store
         //    console.log($store.name, $store.id);        
->>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
+
+        console.log(store.id);
+        app.getProduct(store.id);
     });
 };
 
 app.events = function () {
     $('form').on('submit', function (e) {
         e.preventDefault();
-<<<<<<< HEAD
-        var $postalCode = $('#postalCode').val().replace(' ', '+'); // Grab users postal code        
-        app.getStores($postalCode); // Finds the closest store
-
-=======
         //Gives us user postal code and finds the closest store
-        const $postalCode = $('#postalCode').val().replace(' ', '+');
+        var $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
         // console.log($postalCode);
 
         app.selectedPrice = $('.selectPrice input[type="radio"]:checked').val();
         app.getProduct(app.selectedPrice);
         // console.log(selectedPrice);
->>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
 
-        let selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
         // console.log(selectedDrink);
 
@@ -149,7 +121,7 @@ app.events = function () {
 
 // based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
 app.beerOrWineChoice = function (wineorbeer) {
-    let beverageChoice = [];
+    var beverageChoice = [];
     if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
         beverageChoice.push(app.userOptions['wine']);
     } else {

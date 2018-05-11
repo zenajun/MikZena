@@ -76,7 +76,7 @@ app.getProduct = function (store) {
     
       
     //   console.log(drink.result);
-        const listOfDrinks = drink.result;
+        const listOfDrinks = res.result;
         const drinkChoices = [];
         //filter through all the drink options and the find the 5 that match the parameters and push into the new array
         listOfDrinks.filter((drink) => {
