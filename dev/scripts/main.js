@@ -134,7 +134,7 @@ app.events = function() {
 
 // based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
 app.beerOrWineChoice = function(wineorbeer) {
-    const beverageChoice = [];
+    let beverageChoice = [];
     if ( wineorbeer === 'Red Wine' || wineorbeer === 'White Wine' ) {
        beverageChoice.push(app.userOptions['wine']);
     } else {
