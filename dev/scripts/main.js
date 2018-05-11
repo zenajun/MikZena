@@ -5,9 +5,60 @@ Get the product data and use the stored variables to get the data we need.
 Get the Product id and use that to find the Store
 
 */
+// object with two arrays, the values of the selections that users can make
 
 // App
 const app = {};
+
+app.userOptions = {
+    wine : [
+        {
+            option: 'Budget',
+            lowpoint: 0,
+            highpoint: 999,
+        },
+        {
+            option: 'Cheap',
+            lowpoint: 1000,
+            highpoint: 1999,
+        },
+        {
+            option: 'Pricy',
+            lowpoint: 2000,
+            highpoint: 3999,
+        },
+        {   
+            option: 'Expensive',
+            lowpoint: 4000,
+            highpoint: 200000,
+        },
+    ],
+    brew: [
+        {
+            option: 'Budget',
+            lowpoint: 0,
+            highpoint: 399,
+        },
+        {
+            option: 'Cheap',
+            lowpoint: 400,
+            highpoint: 1999,
+        },
+        {
+            option: 'Pricy',
+            lowpoint: 2000,
+            highpoint: 3499,
+        },
+        {
+            option: 'Expensive',
+            lowpoint: 3500,
+            highpoint: 100000
+        }
+    ]
+}
+
+app.finalOptions = [];
+console.log(app.finalOptions);
 
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
@@ -24,6 +75,7 @@ app.getProduct = function (store) {
     console.log(res.result);
     
       
+<<<<<<< HEAD
       console.log(res.result);
         const listOfDrinks = res.result;
         // const drinkChoices = [];
@@ -39,6 +91,22 @@ app.getProduct = function (store) {
         // console.log(drinkChoices);     
         
         
+=======
+    //   console.log(drink.result);
+        const listOfDrinks = drink.result;
+        const drinkChoices = [];
+        //filter through all the drink options and the find the 5 that match the parameters and push into the new array
+        listOfDrinks.filter((drink) => {
+        // console.log(drink.primary_category);
+        if (drink.primary_category === 'Wine' && drink.secondary_category === 'Red Wine') {
+            // console.log(drink.secondary_category);
+            
+        } else if (drink.primary_category === 'Wine' && drink.secondary_category === 'White Wine') {
+            // console.log(drink.secondary_category);
+
+        }
+  
+>>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
       });
     });
 } // productid end
@@ -52,11 +120,17 @@ app.getStores = function(geo)  {
        },
        contentType: 'application/json',
        dataType: 'jsonp'
+<<<<<<< HEAD
    }).then(function (res) {     
 
               
        const store = res.result[0];  // Get the nearest store
        console.log(store);
+=======
+   }).then(function (store) {            
+       const $store = store.result[0];  // Get the nearest store
+    //    console.log($store.name, $store.id);        
+>>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
        
        console.log(store.id);        
        app.getProduct(store.id)
@@ -65,16 +139,60 @@ app.getStores = function(geo)  {
 
 app.events = function() {
     $('form').on('submit', function(e) {
+<<<<<<< HEAD
         e.preventDefault();          
         const $postalCode = $('#postalCode').val().replace(' ', '+'); // Grab users postal code        
         app.getStores($postalCode); // Finds the closest store
 
+=======
+        e.preventDefault();        
+        //Gives us user postal code and finds the closest store
+        const $postalCode = $('#postalCode').val().replace(' ', '+');
+        app.getStores($postalCode);
+        // console.log($postalCode);
+
+        app.selectedPrice = $('.selectPrice input[type="radio"]:checked').val();
+        app.getProduct(app.selectedPrice);
+        // console.log(selectedPrice);
+>>>>>>> 9645e7da9b0ac639c2913995c36439a5b62f09ef
 
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getProduct(selectedDrink);
-        console.log(selectedDrink);
+        // console.log(selectedDrink);
+
+        app.beerOrWineChoice(selectedDrink);
+        
     });
 } //on click end
+
+// based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
+app.beerOrWineChoice = function(wineorbeer) {
+    const beverageChoice = [];
+    if ( wineorbeer === 'Red Wine' || wineorbeer === 'White Wine' ) {
+       beverageChoice.push(app.userOptions['wine']);
+    } else {
+        beverageChoice.push(app.userOptions['brew']);
+    }
+    // passing array of bevy choice into this
+    app.matchingChoice(beverageChoice[0]);  
+    // console.log(beverageChoice[0]);
+}
+
+// beverage choice turned into choice
+// we looped through the bevychoice and to find the first item in the array, drink and then we matched it with the users choice and pulled our objects info
+app.matchingChoice = function(choice) {   
+     
+    for (let i = 0; i < choice.length; i = i + 1 ) {
+        const userChoice = choice[i].option;
+    
+        if (userChoice === app.selectedPrice ) {
+            app.finalOptions.push(choice[i]);
+        }
+        // console.log(choice[i]);
+    }
+    
+}
+
 
 
 app.init = function() {  // Everything gets called inside of this function
