@@ -11,80 +11,72 @@ Get the Product id and use that to find the Store
 const app = {};
 
 app.userOptions = {
-    wine: [{
-        option: 'Budget',
-        lowpoint: 0,
-        highpoint: 999
-    }, {
-        option: 'Cheap',
-        lowpoint: 1000,
-        highpoint: 1999
-    }, {
-        option: 'Pricy',
-        lowpoint: 2000,
-        highpoint: 3999
-    }, {
-        option: 'Expensive',
-        lowpoint: 4000,
-        highpoint: 200000
-    }],
-    brew: [{
-        option: 'Budget',
-        lowpoint: 0,
-        highpoint: 399
-    }, {
-        option: 'Cheap',
-        lowpoint: 400,
-        highpoint: 1999
-    }, {
-        option: 'Pricy',
-        lowpoint: 2000,
-        highpoint: 3499
-    }, {
-        option: 'Expensive',
-        lowpoint: 3500,
-        highpoint: 100000
-    }]
+    wine: {
+        budget: {
+            lowpoint: 0,
+            highpoint: 999
+        },
+        cheap: {
+            lowpoint: 1000,
+            highpoint: 1999
+        },
+        pricy: {
+            lowpoint: 2000,
+            highpoint: 3999
+        },
+        expensive: {
+            lowpoint: 4000,
+            highpoint: 200000
+        }
+    },
+    brew: {
+        budget: {
+            lowpoint: 0,
+            highpoint: 399
+        },
+        cheap: {
+            lowpoint: 400,
+            highpoint: 1999
+        },
+        pricy: {
+            lowpoint: 2000,
+            highpoint: 3499
+        },
+        expensive: {
+            lowpoint: 3500,
+            highpoint: 100000
+        }
+    }    
 };
 
-app.finalOptions = [];
-console.log(app.finalOptions);
-
+app.finalOptions = {};
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-app.getProduct = function (store, drink) {
-    // filter through the whole product array
+app.getWine = function(store, wineColour) {
     return $.ajax({
-        url: 'http://lcboapi.com/products?primary_category=Wine&per_page=100&=511',
+        url: `http://lcboapi.com/products?q=${wineColour}&per_page=100&=${store}`,
         dataType: 'jsonp',
         method: 'GET',
         headers: {
             Authorization: app.key
         }
-    }).then(function (drink) {
-        //   console.log(drink);
-
-        console.log(drink.result);
-        let listOfDrinks = drink.result;
-        let drinkChoices = [];
-        //filter through all the drink options and the find the 5 that match the parameters and push into the new array
-        listOfDrinks.filter(function (drink) {
-            // console.log(drink.primary_category);
-            if (drink.primary_category === 'Wine' && drink.secondary_category === 'Red Wine') {
-                // console.log(drink.secondary_category);
-
-            } else if (drink.primary_category === 'Wine' && drink.secondary_category === 'White Wine') {
-                // console.log(drink.secondary_category);
-
-            }
-        });
+    }).then(function (res) {
+        const wines = res.result
+        wines.filter(function(wine) {
+            if (wine.secondary_category = 'White Wine' && wine.price_in_cents < 1000) { 
+            }            
+        });        
     });
-}; // productid end
+}
+
+app.getBeerCider = function(store, beerCider) {
+    // put API call here
+}
 
 // this finds the closest store based on postal code, get the  store on submit of the app.events
 app.getStores = function (geo) {
     return $.ajax({
-        url: 'http://lcboapi.com/stores?&geo=' + geo,
+        url: `http://lcboapi.com/stores?&geo=${geo}`,
         headers: {
             Authorization: app.key
         },
@@ -92,7 +84,7 @@ app.getStores = function (geo) {
         dataType: 'jsonp'
     }).then(function (store) {
         const $store = store.result[0]; // Get the nearest store
-        //    console.log($store.name, $store.id);        
+        app.storeID = $store.id;  
     });
 };
 
@@ -102,51 +94,58 @@ app.events = function () {
         //Gives us user postal code and finds the closest store
         const $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
-        // console.log($postalCode);
-
-        app.selectedPrice = $('.selectPrice input[type="radio"]:checked').val();
-        app.getProduct(app.selectedPrice);
-        // console.log(selectedPrice);
-
+        
+        const usersPriceRange = $('.selectPrice input[type="radio"]:checked').val();
+       
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
-        app.getProduct(selectedDrink);
-        // console.log(selectedDrink);
-
-        app.beerOrWineChoice(selectedDrink);
+        app.getBeverageAndPriceRange(selectedDrink, usersPriceRange)
     });
 }; //on click end
 
-// based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
-app.beerOrWineChoice = function (wineorbeer) {
-    const beverageChoice = [];
-    if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
-        beverageChoice.push(app.userOptions['wine']);
+app.getBeverageAndPriceRange = function(drink, price) {
+    if (drink === 'Red Wine') {
+        app.finalOptions.drink = 'red+wine'
+    } else if (drink === 'White Wine') {
+        app.finalOptions.drink = 'white+wine'
+    } else if (drink === 'Beer') {
+        app.finalOptions.drink = 'beer'
     } else {
-        beverageChoice.push(app.userOptions['brew']);
-    }
-    // passing array of bevy choice into this
-    app.matchingChoice(beverageChoice[0]);
-    // console.log(beverageChoice[0]);
-};
-
-// beverage choice turned into choice
-// we looped through the bevychoice and to find the first item in the array, drink and then we matched it with the users choice and pulled our objects info
-app.matchingChoice = function (choice) {
-
-    for (let i = 0; i < choice.length; i = i + 1) {
-        const userChoice = choice[i].option;
-
-        if (userChoice === app.selectedPrice) {
-            app.finalOptions.push(choice[i]);
+        app.finalOptions.drink = 'cider'
+    }    
+    if (drink === 'Red Wine' || drink === 'White Wine') {
+        if (price === 'budget') {
+            app.finalOptions.lowPoint = app.userOptions.wine.budget.lowpoint;
+            app.finalOptions.highPoint = app.userOptions.wine.budget.highpoint;     
+        } else if (price === 'cheap') {
+            app.finalOptions.lowPoint = app.userOptions.wine.cheap.lowpoint;
+            app.finalOptions.highPoint = app.userOptions.wine.cheap.highpoint;
+        } else if (price === 'pricy') {
+            app.finalOptions.lowPoint = app.userOptions.wine.pricy.lowpoint;
+            app.finalOptions.highPoint = app.userOptions.wine.pricy.highpoint;
+        } else {
+            app.finalOptions.lowPoint = app.userOptions.wine.expensive.lowpoint;
+            app.finalOptions.highPoint = app.userOptions.wine.expensive.highpoint;
+        }    
+    } else {
+        if (price === 'budget') {
+            app.finalOptions.lowPoint = app.userOptions.brew.budget.lowpoint;
+            app.finalOptions.highPoint = app.userOptions.brew.budget.highpoint;
+        } else if (price === 'cheap') {
+            app.finalOptions.lowPoint = app.userOptions.brew.cheap.lowpoint
+            app.finalOptions.highPoint = app.userOptions.brew.cheap.highpoint;
+        } else if (price === 'pricy') {
+            app.finalOptions.lowPoint = app.userOptions.brew.pricy.lowpoint
+            app.finalOptions.highPoint = app.userOptions.brew.pricy.highpoint;
+        } else {
+            app.finalOptions.lowPoint = app.userOptions.brew.expensive.lowpoint
+            app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
-        // console.log(choice[i]);
-    }
-};
+    }       
+    console.log(app.finalOptions);   
+}
 
-app.init = function () {
-    // Everything gets called inside of this function
+app.init = function () {    // Everything gets called inside of this function    
     app.events();
-    app.getProduct();
 };
 
 // Document ready
