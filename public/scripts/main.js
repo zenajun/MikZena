@@ -142,7 +142,7 @@ app.matchingChoice = function (choice) {
     // This number stores the price variable from the arrays
     var lowPoint = app.finalOptions[0].lowpoint;
     var highPoint = app.finalOptions[0].highpoint;
-    // Now calling the API this runs when we start the event to give us the information from the low and high point
+    // Now calling the APfile:///Users/mikaelascornaienchi/Documents/Sites/2018WinterBootcamp/week5/day5-gulp/movieCodeAlong/index.html?I this runs when we start the event to give us the information from the low and high point
     app.getProduct();
 };
 
