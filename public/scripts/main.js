@@ -49,33 +49,24 @@ app.userOptions = {
     }]
 };
 
-app.finalOptions = [];
-console.log(app.finalOptions);
-
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
 app.getProduct = function (store, drink) {
     // filter through the whole product array
     return $.ajax({
-        url: 'http://lcboapi.com/products?primary_category=Wine&per_page=100&=511',
+        url: 'http://lcboapi.com/products?primary_category=' + drink + '&per_page=100&=' + store,
         dataType: 'jsonp',
         method: 'GET',
         headers: { Authorization: app.key }
     }).then(function (drink) {
-        //   console.log(drink);
 
-        //   console.log(drink.result);
+        //   console.log(drink);
         var listOfDrinks = drink.result;
         var drinkChoices = [];
         //filter through all the drink options and the find the 5 that match the parameters and push into the new array
         listOfDrinks.filter(function (drink) {
-            // console.log(drink.primary_category);
-            if (drink.primary_category === 'Wine' && drink.secondary_category === 'Red Wine') {
-                // console.log(drink.secondary_category);
-
-            } else if (drink.primary_category === 'Wine' && drink.secondary_category === 'White Wine') {
-                // console.log(drink.secondary_category);
-
+            if (drink.primary_category === 'Wine' && drink.secondary_category === selectedDrink) {} else if (drink.primary_category === 'Wine' && drink.secondary_category === selectedDrink) {
+                console.log(drink.secondary_category);
             }
         });
     });
@@ -92,7 +83,8 @@ app.getStores = function (geo) {
         dataType: 'jsonp'
     }).then(function (store) {
         var $store = store.result[0]; // Get the nearest store
-        //    console.log($store.name, $store.id);        
+        app.storeID = $store.id;
+        //    console.log($store.name, $store.id);     
     });
 };
 
@@ -113,12 +105,15 @@ app.events = function () {
         // console.log(selectedDrink);
 
         app.beerOrWineChoice(selectedDrink);
+        app.getProduct(app.storeID);
     });
 }; //on click end
+
 
 // based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
 app.beerOrWineChoice = function (wineorbeer) {
     var beverageChoice = [];
+
     if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
         beverageChoice.push(app.userOptions['wine']);
     } else {
@@ -132,6 +127,8 @@ app.beerOrWineChoice = function (wineorbeer) {
 // beverage choice turned into choice
 // we looped through the bevychoice and to find the first item in the array, drink and then we matched it with the users choice and pulled our objects info
 app.matchingChoice = function (choice) {
+    // this is to refresh the array so user can change their option
+    app.finalOptions = [];
 
     for (var i = 0; i < choice.length; i = i + 1) {
         var userChoice = choice[i].option;
@@ -141,12 +138,17 @@ app.matchingChoice = function (choice) {
         }
         // console.log(choice[i]);
     }
+
+    // This number stores the price variable from the arrays
+    var lowPoint = app.finalOptions[0].lowpoint;
+    var highPoint = app.finalOptions[0].highpoint;
+    // Now calling the API this runs when we start the event to give us the information from the low and high point
+    app.getProduct();
 };
 
 app.init = function () {
     // Everything gets called inside of this function
     app.events();
-    app.getProduct();
 };
 
 // Document ready
