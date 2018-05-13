@@ -101,14 +101,17 @@ app.getBeerCider = function (store) {
 }
 
 app.displayInfo = function (store) {
-    $('section.result').empty();
+    $('.result .results-container').empty();
+
     for (let i = 0; i < 3; i++) {
         const resultsContainer = `<div class="userResult">
                 <h2 class="userDrink">${app.selectedDrinks[i].name}</h2>
                 <p class="userPrice">$${((app.selectedDrinks[i].price_in_cents) / 100).toFixed(2)}</p>
-                <img src ="${app.selectedDrinks[i].image_url}">
+                <img src = "${app.selectedDrinks[i].image_url}"
+                alt="${app.selectedDrinks[i].tags}">
+                <p class="drinkNotes"></p>
             </div>`
-        $('section.result').append(resultsContainer);
+        $('.result .results-container').append(resultsContainer);
     }
 }
 

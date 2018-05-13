@@ -3,7 +3,10 @@ form {
 	text-align: center;
 	input[type="radio"] {
     display: none;
-	}
+  }
+  .userInput label {
+    padding: 5px;
+  }
 	input#postalCode {
 		width: 80px;
 		margin-left: 20px;
@@ -15,35 +18,23 @@ form {
   .selectCity {
     padding-bottom: 15px;
   }
-	.selectPrice {
-		label {
-			padding: 15px;
-			margin: 20px;
-			border: 5px solid transparent;
-			box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-			top: 0px;
-      transition: all 0.5s;
-    }
+  label {
+    padding: 15px;
+    margin: 20px;
+    border: 5px solid transparent;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+    top: 0px;
+    transition: all 0.5s;
+  }   
+  input[type="radio"]:checked+label {
+    border: 5px solid $primary;
   }
-  label ~ input[type=radio]:checked {
-    border: 5px solid #DCDCDC;
-  }
-  .selectDrink {
-    label {
-      padding: 0px 15px;
-    }
-    label img {
-      max-width: 75px;
-      padding: 10px;
-			border: 5px solid $primary;
-			box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-			top: 0px;
-			transition: all 0.5s;
-    }
-    label img:active {
-      top: 3px;
-      box-shadow: 0px 5px 5px $primary;
-    }
+  label img {
+    max-width: 75px;
+    padding: 10px;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+    top: 0px;
+    transition: all 0.5s;
   }
 }
 input[type=submit] {
@@ -55,13 +46,13 @@ input[type=submit] {
     border: 5px solid #DCDCDC;
   }
 }
-@media (max-width: 420px) {
-  form {
-    max-width: 90%;
-    .selectDrink {
-      label {
-        padding: 5px;
-      }
-    }
-  }
-}
+// @media (max-width: 420px) {
+//   form {
+//     max-width: 90%;
+//     .selectDrink {
+//       label {
+//         padding: 5px;
+//       }
+//     }
+//   }
+// }

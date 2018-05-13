@@ -10,79 +10,82 @@
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
-
 	<div class="wrapper">
 		<header>
 			<img src="dev/assets/hero.jpg" alt="Wine & Beer">
 		</header>
-		<div class="container">
-			<form action="#">
-				<div class="formInfo">
-					<h3>Need a drink? Choice is hard, let us help!</h3>
-					<h5>Just fill out a few questions and we'll pick some options for you, available at your closest LCBO.</h5>
+		<form action="#">
+			<div class="formInfo">
+				<h3>Need a drink? Choice is hard, let us help!</h3>
+				<h5>Just fill out a few questions and we'll pick some options for you, available at your closest LCBO.</h5>
+			</div>
+			<!-- City Question -->
+			<div class="selectCity">
+				<h2>Where are you?</h2>
+				<div class="userInput">
+					<label for="postalCode">Enter your postal code</label>
+					<input type="text" placeholder="M5V 2A9" name="question1" id="postalCode" pattern="[L-Pl-p][0-9][A-Za-z] [0-9][A-Za-z][0-9]" value="M5V 2A9">
 				</div>
-				<!-- City Question -->
-				<div class="selectCity">
-					<h2>Where are you?</h2>
-					<div class="userInput">
-						<label for="postalCode">Enter your postal code</label>
-						<input type="text" placeholder="M5V 2A9" name="question1" id="postalCode" pattern="[L-Pl-p][0-9][A-Za-z] [0-9][A-Za-z][0-9]" value="M5V 2A9">
-					</div>
-				</div>
+			</div>
+	
+			<!-- Price Question -->
+			<div class="selectPrice">
+				<h2>Budget!</h2>
+				<div class="userSelection">
+					<input type="radio" name="price" id="budget" value="budget">
+					<label for="budget">$</label>
 		
-				<!-- Price Question -->
-				<div class="selectPrice">
-					<h2>Budget!</h2>
-					<div class="userSelection">
-						<label for="budget">$</label>
-						<input type="radio" name="price" id="budget" value="budget">
-			
-						<label for="cheap">$$</label>
-						<input type="radio" name="price" id="cheap" value="cheap">
-			
-						<label for="pricy">$$$</label>
-						<input type="radio" name="price" id="pricy" value="pricy">
-			
-						<label for="expensive">$$$$</label>
-						<input type="radio" name="price" id="expensive" value="expensive">
-					</div>
-				</div>
+					<input type="radio" name="price" id="cheap" value="cheap">
+					<label for="cheap">$$</label>
 		
-				<!-- Drink Question -->
-				<div class="selectDrink">
-					<h2>Poison!</h2>
-					<div class="userSelection">
-						<input type="radio" name="drink" id="beer" value="Beer">
-						<label for="beer"><img src="dev/assets/beer.png" alt="Beer Glass"></label>
-			
-						<label for="redwine"><img src="dev/assets/redwine.png" alt="Red Wine Glass"></label>
-						<input type="radio" name="drink" id="redwine" value="Red Wine">
-			
-						<label for="whitewine"><img src="dev/assets/whitewine.png" alt="White Wine Glass"></label>
-						<input type="radio" name="drink" id="whitewine" value="White Wine">
-			
-						<label for="cider"><img src="dev/assets/cider.png" alt="Cider Glass"></label>
-						<input type="radio" name="drink" id="cider" value="Ciders">
-					</div>
+					<input type="radio" name="price" id="pricy" value="pricy">
+					<label for="pricy">$$$</label>
+		
+					<input type="radio" name="price" id="expensive" value="expensive">
+					<label for="expensive">$$$$</label>
 				</div>
-				
-				<!-- Submit Button -->
-				<input type="submit" value="Find me a drink!" class="submit" id="locationResult">
-			</form>
-		</div>
+			</div>
+	
+			<!-- Drink Question -->
+			<div class="selectDrink">
+				<h2>Poison!</h2>
+				<div class="userSelection">
+					<input type="radio" name="drink" id="beer" value="Beer">
+					<label for="beer"><img src="dev/assets/beer.png" alt="Beer Glass"></label>
+		
+					<input type="radio" name="drink" id="redwine" value="Red Wine">
+					<label for="redwine"><img src="dev/assets/redwine.png" alt="Red Wine Glass"></label>
+		
+					<input type="radio" name="drink" id="whitewine" value="White Wine">
+					<label for="whitewine"><img src="dev/assets/whitewine.png" alt="White Wine Glass"></label>
+		
+					<input type="radio" name="drink" id="cider" value="Ciders">
+					<label for="cider"><img src="dev/assets/cider.png" alt="Cider Glass"></label>
+				</div>
+			</div>
+			
+			<!-- Submit Button -->
+			<input type="submit" value="Find me a drink!" class="submit" id="locationResult">
+		</form>
 	</div>
 
 	<!-- Result Section -->
-	<section class="locationResult">
+	<div class="wrapper">
 
-	</section>
-	<section class="result">
-			
-	</section>
-	<footer>
-		<p>© 2018 Made by Zena Jun & Mikaela Scornaienchi</p>
-		<p>Wine glass by Paul Berthelon, Beer glass by by Erin Agnoli, Cider glass by Viktor Ostrovsky</p>
-	</footer>
+		<section class="locationResult">
+			lorem
+		</section>
+		<section class="result">
+			<h2>Your results:</h2>
+			<div class="results-container">
+				<!-- Drinks go here		 -->
+			</div>
+		</section>
+		<footer>
+			<p>© 2018 Made by Zena Jun & Mikaela Scornaienchi</p>
+			<p>Wine glass by Paul Berthelon, Beer glass by by Erin Agnoli, Cider glass by Viktor Ostrovsky</p>
+		</footer>
+	</div>
 
 	<!-- jQuery Script -->
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
