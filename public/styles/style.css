@@ -133,9 +133,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 form {
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  -webkit-box-shadow: 2px 2px 30px 11px rgba(255, 255, 255, 0.3);
-          box-shadow: 2px 2px 30px 11px rgba(255, 255, 255, 0.3); }
+  text-align: center; }
   form input[type="radio"] {
     display: none; }
   form input#postalCode {
@@ -144,49 +142,49 @@ form {
   form .userSelection {
     margin: 0 auto;
     height: 50px; }
+  form .selectCity {
+    padding-bottom: 15px; }
   form .selectPrice label {
     padding: 15px;
     margin: 20px;
-    border: 5px solid #580000;
+    border: 5px solid transparent;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
     top: 0px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
-  form .selectPrice label:active {
-    top: 3px;
-    -webkit-box-shadow: 0px 5px 5px #580000;
-            box-shadow: 0px 5px 5px #580000; }
-  form .selectPrice label:hover {
-    border: 5px solid #580000;
-    color: grey; }
-  form input[type=radio]:checked ~ label {
-    border: 5px solid transparent; }
+  form .selectPrice input[type="radio"]:checked + label {
+    border: 5px solid #da810f; }
   form .selectDrink label {
-    padding: 15px; }
+    padding: 0px 15px; }
   form .selectDrink label img {
     max-width: 75px;
-    margin-bottom: 20px;
     padding: 10px;
-    border: 5px solid #580000;
+    border: 5px solid #da810f;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
     top: 0px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
   form .selectDrink label img:active {
     top: 3px;
-    -webkit-box-shadow: 0px 5px 5px #580000;
-            box-shadow: 0px 5px 5px #580000; }
-  form .selectDrink label:visited {
-    border: 1px solid #580000; }
-  form input[type=submit] {
-    border: 5px solid #580000;
-    margin: 42px 0px 10px; }
-    form input[type=submit]:hover {
-      border: 5px solid black; }
+    -webkit-box-shadow: 0px 5px 5px #da810f;
+            box-shadow: 0px 5px 5px #da810f; }
+
+input[type=submit] {
+  border: 5px solid #da810f;
+  margin: 42px 0px 10px;
+  padding: 10px;
+  -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3); }
+  input[type=submit]:hover {
+    border: 5px solid #DCDCDC; }
+
+@media (max-width: 420px) {
+  form {
+    max-width: 90%; }
+    form .selectDrink label {
+      padding: 5px; } }
 
 section.result h2 {
   font-size: 20px;
@@ -223,8 +221,9 @@ section.result .results-container {
     margin: 0 auto;
     border: 10px solid black; }
 
-.wrapper {
+body .wrapper {
   height: 100vh;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,19 +236,59 @@ section.result .results-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
-          flex-direction: column;
-  background: black; }
+          flex-direction: column; }
 
-.container {
+body header {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  body header img {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+    max-height: 200px; }
+
+body .container {
   max-width: 900px;
-  margin: 0 auto;
-  background-color: white; }
+  margin: 0 auto; }
 
-.hero {
-  max-width: 500px;
-  display: block; }
-  .hero img {
-    max-width: 100%; }
+body h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0px;
+  font-size: 15px;
+  font-size: 1.5rem;
+  padding: 10px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
+
+body .formInfo {
+  padding-bottom: 15px; }
+  body .formInfo h3 {
+    font-size: 20px;
+    font-size: 2rem;
+    margin: 0px;
+    padding: 15px 20px 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
+  body .formInfo h5 {
+    font-size: 10px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    width: 600px;
+    font-family: 'Montserrat', sans-serif; }
+
+body .selectPrice h2 {
+  margin-bottom: 20px; }
 
 h2 {
   font-family: 'Playfair Display', serif;

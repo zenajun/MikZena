@@ -11,13 +11,15 @@
 </head>
 <body>
 	<div class="wrapper">
-		<header class="hero">
+		<header>
 			<img src="dev/assets/hero.jpg" alt="Wine & Beer">
 		</header>
 		<div class="container">
-			<form action="#" class="userInput">
-				<h3>Need a drink? Choice is hard, let us help!</h3>
-				<h5>Just fill out a few questions and we'll pick some options for you, available at your closest LCBO.</h5>
+			<form action="#">
+				<div class="formInfo">
+					<h3>Need a drink? Choice is hard, let us help!</h3>
+					<h5>Just fill out a few questions and we'll pick some options for you, available at your closest LCBO.</h5>
+				</div>
 				<!-- City Question -->
 				<div class="selectCity">
 					<h2>Where are you?</h2>
@@ -31,17 +33,17 @@
 				<div class="selectPrice">
 					<h2>Budget!</h2>
 					<div class="userSelection">
-						<label for="budget">$</label>
 						<input type="radio" name="price" id="budget" value="budget">
+						<label for="budget">$</label>
 			
-						<label for="cheap">$$</label>
 						<input type="radio" name="price" id="cheap" value="cheap">
+						<label for="cheap">$$</label>
 			
-						<label for="pricy">$$$</label>
 						<input type="radio" name="price" id="pricy" value="pricy">
+						<label for="pricy">$$$</label>
 			
-						<label for="expensive">$$$$</label>
 						<input type="radio" name="price" id="expensive" value="expensive">
+						<label for="expensive">$$$$</label>
 					</div>
 				</div>
 		

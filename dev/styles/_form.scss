@@ -1,9 +1,8 @@
 form {
 	font-family: 'Montserrat', sans-serif;
 	text-align: center;
-	box-shadow: 2px 2px 30px 11px rgba(255, 255, 255, 0.3);
 	input[type="radio"] {
-		display: none;
+    display: none;
 	}
 	input#postalCode {
 		width: 80px;
@@ -12,40 +11,34 @@ form {
 	.userSelection {
 		margin: 0 auto;
 		height: 50px;
-	}
+  }
+  .selectCity {
+    padding-bottom: 15px;
+  }
 	.selectPrice {
-		 label {
+		label {
 			padding: 15px;
 			margin: 20px;
-			border: 5px solid $primary;
+			border: 5px solid transparent;
 			box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-			position: relative;
 			top: 0px;
       transition: all 0.5s;
-    }
-    label:active {
-      top: 3px;
-      box-shadow: 0px 5px 5px $primary;
-    }
-    label:hover {
+    }   
+    input[type="radio"]:checked+label {
       border: 5px solid $primary;
-      background-color: grey;
     }
-  }
-  input[type=radio]:checked ~ label {
-    border: 5px solid transparent;
+     
+   
   }
   .selectDrink {
     label {
-      padding: 15px;
+      padding: 0px 15px;
     }
     label img {
       max-width: 75px;
-      margin-bottom: 20px;
       padding: 10px;
 			border: 5px solid $primary;
 			box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-			position: relative;
 			top: 0px;
 			transition: all 0.5s;
     }
@@ -53,17 +46,24 @@ form {
       top: 3px;
       box-shadow: 0px 5px 5px $primary;
     }
-    label:visited {
-      border: 1px solid $red;
-      background-color: grey;
-    }
   }
 }
-	input[type=submit] {
-    border: 5px solid $primary;
-    margin: 42px 0px 10px;
-    &:hover {
-      border: 5px solid black;
+input[type=submit] {
+  border: 5px solid $primary;
+  margin: 42px 0px 10px;
+  padding: 10px;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  &:hover {
+    border: 5px solid #DCDCDC;
+  }
+}
+@media (max-width: 420px) {
+  form {
+    max-width: 90%;
+    .selectDrink {
+      label {
+        padding: 5px;
+      }
     }
   }
 }

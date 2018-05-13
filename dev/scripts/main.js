@@ -134,7 +134,6 @@ app.getStores = function(geo) {
         const $store = store.result[0]; // Get the nearest store
         app.storeLocation = $store;
         app.storeID = $store.id;    
-        console.log(store);
         app.displayLocation();  
     });
 };
@@ -143,7 +142,7 @@ app.displayLocation = function() {
     $('section.locationResult').empty();    
     const locationResultContainer = 
         `<div class="userResult">
-            // <h2 class="userDrink">${app.storeLocation.address_line_1}</h2>
+            <h2 class="userDrink">${app.storeLocation.address_line_1}, ${app.storeLocation.city}</h2>
             <h2 class="userDrink">${app.storeLocation.city}</h2>
         </div>`
     $('section.locationResult').append(locationResultContainer);
