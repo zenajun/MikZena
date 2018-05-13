@@ -51,13 +51,30 @@ app.userOptions = {
 };
 
 app.finalOptions = {};
+<<<<<<< HEAD
 app.selectedDrinks = [];
+=======
+<<<<<<< HEAD
+app.selectedDrinks = [];
+=======
+
+
+>>>>>>> 9ca02a19fa33744d5e78d40f6f7e31788ad1ceb8
+>>>>>>> 71910743a5cef0c32c3c64574abb2e6f05f1f1d4
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
 app.getWine = function (store, wineColor) {
     return $.ajax({
-
+<<<<<<< HEAD
         url: 'http://lcboapi.com/products?q=' + app.finalOptions.drink + '&per_page=100&=' + store,
+=======
+
+<<<<<<< HEAD
+        url: 'http://lcboapi.com/products?q=' + app.finalOptions.drink + '&per_page=100&=' + store,
+=======
+        url: 'http://lcboapi.com/products?q=' + wineColour + '&per_page=100&=' + store,
+>>>>>>> 9ca02a19fa33744d5e78d40f6f7e31788ad1ceb8
+>>>>>>> 71910743a5cef0c32c3c64574abb2e6f05f1f1d4
         dataType: 'jsonp',
         method: 'GET',
         headers: {
@@ -66,6 +83,7 @@ app.getWine = function (store, wineColor) {
     }).then(function (res) {
         var wines = res.result;
         var drinkArray = [];
+<<<<<<< HEAD
         app.selectedDrink = [];
         wines.filter(function (wine) {
             if (wine.secondary_category = wineColor && wine.price_in_cents > app.finalOptions.lowPoint && wine.price_in_cents < app.finalOptions.highPoint) {
@@ -79,6 +97,16 @@ app.getWine = function (store, wineColor) {
         app.displayInfo();
     });
 };
+=======
+        app.selectedDrinks = [];
+        wines.filter(function (wine) {
+<<<<<<< HEAD
+            if (wine.secondary_category = wineColor && wine.price_in_cents > app.finalOptions.lowPoint && wine.price_in_cents < app.finalOptions.highPoint) {
+                drinkArray.push(wine);
+            }
+=======
+            if (wine.secondary_category = 'White Wine' && wine.price_in_cents < 1000) {}
+>>>>>>> 71910743a5cef0c32c3c64574abb2e6f05f1f1d4
 
 app.getBeerCider = function (store) {
     return $.ajax({
@@ -98,8 +126,14 @@ app.getBeerCider = function (store) {
             if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
                 drinkArray.push(beerCider);
             }
+<<<<<<< HEAD
         });
         // to loop through and only give us three
+=======
+
+>>>>>>> 9ca02a19fa33744d5e78d40f6f7e31788ad1ceb8
+        });
+>>>>>>> 71910743a5cef0c32c3c64574abb2e6f05f1f1d4
         for (var i = 0; i < 3; i++) {
             app.randomDrank(drinkArray);
         }
@@ -115,12 +149,54 @@ app.displayInfo = function () {
     }
 };
 
+<<<<<<< HEAD
 // get a random drink from the options of drinks and push to the array
 app.randomDrank = function (array) {
     var oneDrank = Math.floor(Math.random() * array.length);
     array.splice(array[oneDrank], 1);
     console.log(array[oneDrank]);
 
+=======
+app.getBeerCider = function (store) {
+    return $.ajax({
+        url: 'http://lcboapi.com/products?q=' + app.finalOptions.drink + '&per_page=100&=' + store,
+        dataType: 'jsonp',
+        method: 'GET',
+        headers: {
+            Authorization: app.key
+        }
+    }).then(function (res) {
+        var beersCiders = res.result;
+        var drinkArray = [];
+        app.selectedDrinks = [];
+        beersCiders.filter(function (beerCider) {
+            if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
+                drinkArray.push(beerCider);
+                // console.log(beerCider.name, beerCider.img_url, beerCider.price_in_cents);               
+                // app.displayInfo(beerCider.name)
+            }
+        });
+        for (var i = 0; i < 3; i++) {
+            app.randomDrank(drinkArray);
+        }
+        app.displayInfo();
+    });
+};
+
+app.displayInfo = function () {
+    $('section.result').empty();
+    for (var i = 0; i < 3; i++) {
+        var resultsContainer = '<div class="userResult">\n                <h2 class="userDrink">' + app.selectedDrinks[i].name + '</h2>\n                <p class="userPrice">$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</p>\n                <img src ="' + app.selectedDrinks[i].image_url + '">\n            </div>';
+        $('section.result').append(resultsContainer);
+        //     console.log(app.selectedDrinks[i].name, app.selectedDrinks[i].price_in_cents);
+        //     //  app.selectedDrinks[i].name
+    }
+};
+
+app.randomDrank = function (array) {
+    var oneDrank = Math.floor(Math.random() * array.length);
+    array.splice(array[oneDrank], 1);
+>>>>>>> 71910743a5cef0c32c3c64574abb2e6f05f1f1d4
     app.selectedDrinks.push(array[oneDrank]);
 };
 // this finds the closest store based on postal code, get the  store on submit of the app.events
@@ -151,7 +227,10 @@ app.events = function () {
 
         var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getBeverageAndPriceRange(selectedDrink, usersPriceRange);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71910743a5cef0c32c3c64574abb2e6f05f1f1d4
         if (selectedDrink === 'White Wine' || selectedDrink === 'Red Wine') {
             app.getWine(app.storeID, selectedDrink);
         } else {
