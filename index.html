@@ -10,11 +10,14 @@
 	<link rel="stylesheet" href="public/styles/style.css">
 </head>
 <body>
-	<div class="wrapper">
-		<header>
+	<header>
+		<div class="wrapper">
 			<img src="public/assets/hero.jpg" alt="Wine & Beer">
-		</header>
-		<form action="#">
+		</div>
+	</header>
+
+	<form action="#">
+		<div class="wrapper">
 			<div class="formInfo">
 				<h3>Need a drink? Choice is hard, let us help!</h3>
 				<h5>Just fill out a few questions and we'll pick some options for you, available at your closest LCBO.</h5>
@@ -27,7 +30,7 @@
 					<input type="text" placeholder="M5V 2A9" name="question1" id="postalCode" pattern="[L-Pl-p][0-9][A-Za-z] [0-9][A-Za-z][0-9]" value="M5V 2A9">
 				</div>
 			</div>
-	
+				
 			<!-- Price Question -->
 			<div class="selectPrice">
 				<h2>Budget!</h2>
@@ -37,7 +40,7 @@
 		
 					<input type="radio" name="price" id="cheap" value="cheap">
 					<label for="cheap">$$</label>
-		
+					
 					<input type="radio" name="price" id="pricy" value="pricy">
 					<label for="pricy">$$$</label>
 		
@@ -45,47 +48,50 @@
 					<label for="expensive">$$$$</label>
 				</div>
 			</div>
-	
+				
 			<!-- Drink Question -->
 			<div class="selectDrink">
 				<h2>Poison!</h2>
 				<div class="userSelection">
 					<input type="radio" name="drink" id="beer" value="Beer">
 					<label for="beer"><img src="public/assets/beer.png" alt="Beer Glass"></label>
-		
+					
 					<input type="radio" name="drink" id="redwine" value="Red Wine">
 					<label for="redwine"><img src="public/assets/redwine.png" alt="Red Wine Glass"></label>
-		
+					
 					<input type="radio" name="drink" id="whitewine" value="White Wine">
 					<label for="whitewine"><img src="public/assets/whitewine.png" alt="White Wine Glass"></label>
-		
+					
 					<input type="radio" name="drink" id="cider" value="Ciders">
 					<label for="cider"><img src="public/assets/cider.png" alt="Cider Glass"></label>
 				</div>
-			</div>
+		
 			
-			<!-- Submit Button -->
-			<input type="submit" value="Find me a drink!" class="submit" id="locationResult">
-		</form>
-	</div>
+		<!-- Submit Button -->
+		<input type="submit" value="Find me a drink!" class="submit" id="locationResult">
+		</div>
+	</form>
 
 	<!-- Result Section -->
-	<div class="wrapper">
-
-		<section class="result">
+	<section class="result">
+		<div class="wrapper">
 			<div class="locationResult">
 				<!-- store location goes here -->
 			</div>
 			<div class="results-container">
 				<!-- Drinks go here		 -->
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<footer>
+	<footer>
+		<div class="wrapper">
 			<p>© 2018 Made by <a href="http://www.zenajun.com" target="_blank">Zena Jun</a> & <a href="https:/www.mikaelamade.com" target="_blank">Mikaela Scornaienchi</a></p>
 			<p>Wine glass by Paul Berthelon, Beer glass by by Erin Agnoli, Cider glass by Viktor Ostrovsky</p>
-		</footer>
-	</div>	
+		</div>
+	</footer>
+		
+
 	
 	<!-- jQuery Script -->
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>

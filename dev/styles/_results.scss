@@ -1,6 +1,7 @@
 section.result {   
     .results-container {
         margin: 0 auto;
+        padding-bottom: 100px;
         @media (min-width: 1000px) {
             display: flex;
             justify-content: space-between;
@@ -8,7 +9,9 @@ section.result {
             .userResult {
                 width: 30%;
             }
-        }        
+        }   
+    } 
+}    
 section.result {
     h2 {
         @include fontSize(20);
