@@ -141,8 +141,8 @@ app.displayLocation = function() {
     $('section.locationResult').empty();    
     const locationResultContainer = 
         `<div class="userResult">
-            <h2 class="userDrink">${app.storeLocation.address_line_1}, ${app.storeLocation.city}</h2>
-            <h2 class="userDrink">${app.storeLocation.city}</h2>
+            <h5 class="userDrink">${app.storeLocation.address_line_1}, ${app.storeLocation.city}</h5>
+            <h5 class="userDrink">${app.storeLocation.city}</h5>
         </div>`
     $('section.locationResult').append(locationResultContainer);
     

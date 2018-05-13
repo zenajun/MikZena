@@ -138,7 +138,10 @@ form {
   form input[type="radio"] {
     display: none; }
   form .userInput label {
-    padding: 5px; }
+    padding: 5px;
+    border: none;
+    -webkit-box-shadow: none;
+            box-shadow: none; }
   form input#postalCode {
     width: 80px;
     margin-left: 20px; }
@@ -155,28 +158,31 @@ form {
     border: 5px solid transparent;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-    top: 0px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
-  form input[type="radio"]:checked + label {
-    border: 5px solid #da810f; }
-  form label img {
+  form .selectDrink label {
     max-width: 75px;
-    padding: 10px;
+    padding: 40px 10px 5px;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
-    top: 0px;
     -webkit-transition: all 0.5s;
-    transition: all 0.5s; }
+    transition: all 0.5s;
+    border: 5px solid transparent;
+    min-height: 75px; }
+  form .selectPrice input[type="radio"]:checked + label,
+  form .selectDrink input[type="radio"]:checked + label {
+    border: 5px solid #da810f; }
+  form label img {
+    max-width: 50px; }
 
 input[type=submit] {
-  border: 5px solid #da810f;
+  border: 5px solid transparent;
   margin: 42px 0px 10px;
   padding: 10px;
   -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
           box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3); }
   input[type=submit]:hover {
-    border: 5px solid #DCDCDC; }
+    border: 5px solid #da810f; }
 
 section.result h2 {
   font-size: 20px;
@@ -213,23 +219,19 @@ section.result .results-container {
     margin: 0 auto;
     border: 10px solid black; }
 
-body .wrapper {
+body header {
+  background-color: black;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-body header {
-  background-color: black; }
+          align-items: center; }
   body header img {
     display: block;
     max-width: 100%;
@@ -245,7 +247,7 @@ body h2 {
   margin: 0px;
   font-size: 15px;
   font-size: 1.5rem;
-  padding: 10px;
+  padding: 10px 20px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 body .formInfo {
@@ -265,29 +267,6 @@ body .formInfo {
 
 body .selectPrice h2 {
   margin-bottom: 20px; }
-
-h2 {
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  margin: 0px;
-  font-size: 15px;
-  font-size: 1.5rem;
-  padding: 10px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-
-h3 {
-  font-size: 20px;
-  font-size: 2rem;
-  margin: 0px;
-  padding: 15px 20px 10px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-
-h5 {
-  font-size: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  margin: 0 auto;
-  font-family: 'Montserrat', sans-serif; }
 
 .selectPrice h2 {
   margin-bottom: 20px; }
