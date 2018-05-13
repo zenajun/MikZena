@@ -1,17 +1,10 @@
-section.result {
-    h2 {
-        @include fontSize(20);
-    }
+section.result {   
     .results-container {
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        .userResult {
-            margin: 0 auto;
-            width: 100%;
-            padding: 10px 0;
+        @media (min-width: 680px) {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
         }
         h4 {
             @include fontSize(14);
