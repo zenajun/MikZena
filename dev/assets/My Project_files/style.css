@@ -155,9 +155,11 @@ form {
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
   form .selectPrice label:active {
-    top: 3px;
+    top: 5px;
     -webkit-box-shadow: 0px 5px 5px #580000;
             box-shadow: 0px 5px 5px #580000; }
+  form .selectPrice input[type=radio]:checked ~ label {
+    border: #580000; }
   form .selectPrice label:hover {
     border: 5px solid #580000; }
   form .selectDrink label {
@@ -175,7 +177,7 @@ form {
     transition: all 0.5s; }
   form input[type=submit] {
     border: 5px solid #580000;
-    margin: 42px 0px 10px; }
+    margin-bottom: 10px; }
     form input[type=submit]:hover {
       border: 5px solid black; }
 

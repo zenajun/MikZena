@@ -93,6 +93,8 @@ app.getBeerCider = function (store) {
         beersCiders.filter(function (beerCider) {
             if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
                 drinkArray.push(beerCider);
+                // console.log(beerCider.name, beerCider.img_url, beerCider.price_in_cents);               
+                // app.displayInfo(beerCider.name)
             }
         });
         for (var i = 0; i < 3; i++) {
@@ -102,11 +104,15 @@ app.getBeerCider = function (store) {
     });
 };
 
-app.displayInfo = function (store) {
+app.displayInfo = function () {
     $('section.result').empty();
     for (var i = 0; i < 3; i++) {
         var resultsContainer = '<div class="userResult">\n                <h2 class="userDrink">' + app.selectedDrinks[i].name + '</h2>\n                <p class="userPrice">$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</p>\n                <img src ="' + app.selectedDrinks[i].image_url + '">\n            </div>';
         $('section.result').append(resultsContainer);
+
+        $('html, body').animate({
+            scrollTop: $("#result").offset().top
+        }, 500);
     }
 };
 
@@ -115,7 +121,6 @@ app.randomDrank = function (array) {
     array.splice(array[oneDrank], 1);
     app.selectedDrinks.push(array[oneDrank]);
 };
-
 // this finds the closest store based on postal code, get the  store on submit of the app.events
 app.getStores = function (geo) {
     return $.ajax({
@@ -128,18 +133,7 @@ app.getStores = function (geo) {
     }).then(function (store) {
         var $store = store.result[0]; // Get the nearest store
         app.storeID = $store.id;
-        app.displayLocation();
     });
-};
-
-app.displayLocation = function () {
-    $('section.locationResult').empty();
-    var locationResultContainer = '<div class="userResult">\n            <h2 class="userDrink">' + app.getStores.address_line_1 + '</h2>\n            <h2 class="userDrink">' + app.getStores.city + '</h2>\n        </div>';
-    $('section.locationResult').append(locationResultContainer);
-
-    $('html, body').animate({
-        scrollTop: $("#locationResult").offset().top - 0
-    }, 500);
 };
 
 app.events = function () {
@@ -200,7 +194,7 @@ app.getBeverageAndPriceRange = function (drink, price) {
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
     }
-    // console.log(app.finalOptions);
+    console.log(app.finalOptions);
 };
 
 app.init = function () {
