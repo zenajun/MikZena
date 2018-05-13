@@ -138,13 +138,14 @@ form {
   form input[type="radio"] {
     display: none; }
   form .userInput label {
-    padding: 5px;
+    padding: 0;
+    margin: 0;
     border: none;
     -webkit-box-shadow: none;
             box-shadow: none; }
   form input#postalCode {
-    width: 80px;
-    margin-left: 20px; }
+    width: 100px;
+    margin-left: 5px; }
   form label[for="postalCode"] {
     -webkit-box-shadow: none;
             box-shadow: none; }
@@ -232,6 +233,10 @@ section.result .results-container {
     font-size: 15px;
     font-size: 1.5rem;
     text-align: center; }
+    font-size: 14px;
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: normal; }
   section.result .results-container p.userPrice {
     text-align: center;
     font-weight: bold; }

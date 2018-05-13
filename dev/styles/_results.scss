@@ -26,6 +26,9 @@ section.result {
         h2 {
             @include fontSize(15);
             text-align: center;  
+            @include fontSize(14);
+            text-align: center;    
+            font-weight: normal;    
         }
         p.userPrice {
             text-align: center;
