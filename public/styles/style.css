@@ -159,7 +159,10 @@ form {
     -webkit-box-shadow: 0px 5px 5px #580000;
             box-shadow: 0px 5px 5px #580000; }
   form .selectPrice label:hover {
-    border: 5px solid #580000; }
+    border: 5px solid #580000;
+    color: grey; }
+  form input[type=radio]:checked ~ label {
+    border: 5px solid transparent; }
   form .selectDrink label {
     padding: 15px; }
   form .selectDrink label img {
@@ -173,13 +176,54 @@ form {
     top: 0px;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
+  form .selectDrink label img:active {
+    top: 3px;
+    -webkit-box-shadow: 0px 5px 5px #580000;
+            box-shadow: 0px 5px 5px #580000; }
+  form .selectDrink label:visited {
+    border: 1px solid #580000; }
   form input[type=submit] {
     border: 5px solid #580000;
     margin: 42px 0px 10px; }
     form input[type=submit]:hover {
       border: 5px solid black; }
 
-body .wrapper {
+section.result h2 {
+  font-size: 20px;
+  font-size: 2rem; }
+
+section.result .results-container {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  section.result .results-container .userResult {
+    margin: 0 auto;
+    width: 100%; }
+  section.result .results-container h2 {
+    font-size: 15px;
+    font-size: 1.5rem;
+    text-align: center; }
+  section.result .results-container p.userPrice {
+    text-align: center;
+    font-weight: bold; }
+  section.result .results-container img {
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+    border: 10px solid black; }
+
+.wrapper {
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -196,18 +240,18 @@ body .wrapper {
           flex-direction: column;
   background: black; }
 
-body .container {
+.container {
   max-width: 900px;
   margin: 0 auto;
   background-color: white; }
 
-body .hero {
+.hero {
   max-width: 500px;
   display: block; }
-  body .hero img {
+  .hero img {
     max-width: 100%; }
 
-body h2 {
+h2 {
   font-family: 'Playfair Display', serif;
   text-align: center;
   margin: 0px;
@@ -216,14 +260,14 @@ body h2 {
   padding: 10px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
-body h3 {
+h3 {
   font-size: 20px;
   font-size: 2rem;
   margin: 0px;
-  padding: 15px 10px 10px;
+  padding: 15px 20px 10px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
-body h5 {
+h5 {
   font-size: 10px;
   font-size: 1rem;
   letter-spacing: 1px;
@@ -231,5 +275,5 @@ body h5 {
   width: 600px;
   font-family: 'Montserrat', sans-serif; }
 
-body .selectPrice h2 {
+.selectPrice h2 {
   margin-bottom: 20px; }
