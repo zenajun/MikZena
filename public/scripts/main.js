@@ -135,9 +135,9 @@ app.getStores = function (geo) {
 };
 
 app.displayLocation = function () {
-    $('section.locationResult').empty();
+    $('section .locationResult').empty();
     var locationResultContainer = '<div class="userResult">\n            <h5 class="userDrink">' + app.storeLocation.address_line_1 + ', ' + app.storeLocation.city + '</h5>\n            <h5 class="userDrink">' + app.storeLocation.city + '</h5>\n        </div>';
-    $('section.locationResult').append(locationResultContainer);
+    $('section .locationResult').append(locationResultContainer);
 
     $('html, body').animate({
         scrollTop: $("#locationResult").offset().top
