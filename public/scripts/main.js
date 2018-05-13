@@ -127,18 +127,20 @@ app.getStores = function (geo) {
         dataType: 'jsonp'
     }).then(function (store) {
         var $store = store.result[0]; // Get the nearest store
+        app.storeLocation = $store;
         app.storeID = $store.id;
+        console.log(store);
         app.displayLocation();
     });
 };
 
 app.displayLocation = function () {
     $('section.locationResult').empty();
-    var locationResultContainer = '<div class="userResult">\n            <h2 class="userDrink">' + app.getStores.address_line_1 + '</h2>\n            <h2 class="userDrink">' + app.getStores.city + '</h2>\n        </div>';
+    var locationResultContainer = '<div class="userResult">\n            // <h2 class="userDrink">' + app.storeLocation.address_line_1 + '</h2>\n            <h2 class="userDrink">' + app.storeLocation.city + '</h2>\n        </div>';
     $('section.locationResult').append(locationResultContainer);
 
     $('html, body').animate({
-        scrollTop: $("#locationResult").offset().top - 0
+        scrollTop: $("#locationResult").offset().top
     }, 500);
 };
 
@@ -200,7 +202,6 @@ app.getBeverageAndPriceRange = function (drink, price) {
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
     }
-    // console.log(app.finalOptions);
 };
 
 app.init = function () {

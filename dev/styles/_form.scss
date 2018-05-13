@@ -21,7 +21,7 @@ form {
 			box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
 			position: relative;
 			top: 0px;
-			transition: all 0.5s;
+      transition: all 0.5s;
     }
     label:active {
       top: 3px;
@@ -29,7 +29,7 @@ form {
     }
     label:hover {
       border: 5px solid $primary;
-      color: grey;
+      background-color: grey;
     }
   }
   input[type=radio]:checked ~ label {
@@ -55,9 +55,10 @@ form {
     }
     label:visited {
       border: 1px solid $red;
-    }
+      background-color: grey;
     }
   }
+}
 	input[type=submit] {
     border: 5px solid $primary;
     margin: 42px 0px 10px;
