@@ -129,23 +129,25 @@ app.getStores = function(geo) {
         dataType: 'jsonp'
     }).then(function (store) {
         const $store = store.result[0]; // Get the nearest store
-        app.storeID = $store.id;
-        app.displayLocation();
+        app.storeLocation = $store;
+        app.storeID = $store.id;    
+        console.log(store);
+        app.displayLocation();  
     });
 };
 
-app.displayLocation = function () {
-    $('section.locationResult').empty();
+app.displayLocation = function() {
+    $('section.locationResult').empty();    
     const locationResultContainer = 
         `<div class="userResult">
-            <h2 class="userDrink">${app.getStores.address_line_1}</h2>
-            <h2 class="userDrink">${app.getStores.city}</h2>
+            // <h2 class="userDrink">${app.storeLocation.address_line_1}</h2>
+            <h2 class="userDrink">${app.storeLocation.city}</h2>
         </div>`
     $('section.locationResult').append(locationResultContainer);
     
     $('html, body').animate({
-        scrollTop: $("#locationResult").offset().top- 0
-    }, 500);
+        scrollTop: $("#locationResult").offset().top
+    }, 500);    
 }
 
 app.events = function () {
@@ -206,7 +208,6 @@ app.getBeverageAndPriceRange = function (drink, price) {
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
     }
-    // console.log(app.finalOptions);
 }
 
 app.init = function () { // Everything gets called inside of this function    
