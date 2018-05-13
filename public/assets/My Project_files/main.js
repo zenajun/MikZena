@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 Start with users quiz ask for their location(store), budget(product) and poison(product)
 Grab that data and store it in variables
@@ -7,7 +9,7 @@ Get the Product id and use that to find the Store
 */
 // object with two arrays, the values of the selections that users can make
 
-const app = {};
+var app = {};
 
 app.userOptions = {
     wine: {
@@ -54,131 +56,114 @@ app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyT
 
 app.getWine = function (store, wineColor) {
     return $.ajax({
-        url: `http://lcboapi.com/products?q=${app.finalOptions.drink}&per_page=100&=${store}`,
+        url: 'http://lcboapi.com/products?q=' + app.finalOptions.drink + '&per_page=100&=' + store,
         dataType: 'jsonp',
         method: 'GET',
         headers: {
             Authorization: app.key
         }
     }).then(function (res) {
-        const wines = res.result;
-        const drinkArray = [];
+        var wines = res.result;
+        var drinkArray = [];
         app.selectedDrinks = [];
         wines.filter(function (wine) {
             if (wine.secondary_category = wineColor && wine.price_in_cents > app.finalOptions.lowPoint && wine.price_in_cents < app.finalOptions.highPoint) {
                 drinkArray.push(wine);
             }
         });
-        for (let i = 0; i < 3; i++) {
+        for (var i = 0; i < 3; i++) {
             app.randomDrank(drinkArray);
         }
         app.displayInfo();
     });
-}
+};
 
 app.getBeerCider = function (store) {
     return $.ajax({
-        url: `http://lcboapi.com/products?q=${app.finalOptions.drink}&per_page=100&=${store}`,
+        url: 'http://lcboapi.com/products?q=' + app.finalOptions.drink + '&per_page=100&=' + store,
         dataType: 'jsonp',
         method: 'GET',
         headers: {
             Authorization: app.key
         }
     }).then(function (res) {
-        const beersCiders = res.result
-        const drinkArray = [];
+        var beersCiders = res.result;
+        var drinkArray = [];
         app.selectedDrinks = [];
         beersCiders.filter(function (beerCider) {
             if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
                 drinkArray.push(beerCider);
+                // console.log(beerCider.name, beerCider.img_url, beerCider.price_in_cents);               
+                // app.displayInfo(beerCider.name)
             }
         });
-        for (let i = 0; i < 3; i++) {
+        for (var i = 0; i < 3; i++) {
             app.randomDrank(drinkArray);
         }
         app.displayInfo();
     });
-}
+};
 
-app.displayInfo = function (store) {
-    $('.result .results-container').empty();
+app.displayInfo = function () {
+    $('section.result').empty();
+    for (var i = 0; i < 3; i++) {
+        var resultsContainer = '<div class="userResult">\n                <h2 class="userDrink">' + app.selectedDrinks[i].name + '</h2>\n                <p class="userPrice">$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</p>\n                <img src ="' + app.selectedDrinks[i].image_url + '">\n            </div>';
+        $('section.result').append(resultsContainer);
 
-    for (let i = 0; i < 3; i++) {
-        const resultsContainer = `<div class="userResult">
-                <h4 class="userDrink">${app.selectedDrinks[i].name} <span>$${((app.selectedDrinks[i].price_in_cents) / 100).toFixed(2)}<span></h4>
-                <img src ="${app.selectedDrinks[i].image_url}" alt="${app.selectedDrinks[i].tags}">
-                <p class="drinkNotes"></p>
-            </div>`
-        $('.result .results-container').append(resultsContainer);
+        $('html, body').animate({
+            scrollTop: $("#result").offset().top
+        }, 500);
     }
-}
+};
 
 app.randomDrank = function (array) {
-    const oneDrank = Math.floor(Math.random() * array.length);
+    var oneDrank = Math.floor(Math.random() * array.length);
     array.splice(array[oneDrank], 1);
     app.selectedDrinks.push(array[oneDrank]);
-}
-
+};
 // this finds the closest store based on postal code, get the  store on submit of the app.events
-app.getStores = function(geo) {
+app.getStores = function (geo) {
     return $.ajax({
-        url: `http://lcboapi.com/stores?&geo=${geo}`,
+        url: 'http://lcboapi.com/stores?&geo=' + geo,
         headers: {
             Authorization: app.key
         },
         contentType: 'application/json',
         dataType: 'jsonp'
     }).then(function (store) {
-        const $store = store.result[0]; // Get the nearest store
-        app.storeLocation = $store;
-        app.storeID = $store.id;    
-        app.displayLocation();  
+        var $store = store.result[0]; // Get the nearest store
+        app.storeID = $store.id;
     });
 };
-
-app.displayLocation = function() {
-    $('section .locationResult').empty();    
-    const locationResultContainer = 
-        `<div class="userResult">
-        	<h2>Your store and results:</h2>
-            <h5 class="userDrink">${app.storeLocation.address_line_1}, ${app.storeLocation.city}</h5>
-            <h5 class="userDrink">${app.storeLocation.city}</h5>
-        </div>`
-    $('section .locationResult').append(locationResultContainer);
-    
-    $('html, body').animate({
-        scrollTop: $("#locationResult").offset().top
-    }, 500);    
-}
 
 app.events = function () {
     $('form').on('submit', function (e) {
         e.preventDefault();
         //Gives us user postal code and finds the closest store
-        const $postalCode = $('#postalCode').val().replace(' ', '+');
+        var $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
 
-        const usersPriceRange = $('.selectPrice input[type="radio"]:checked').val();
+        var usersPriceRange = $('.selectPrice input[type="radio"]:checked').val();
 
-        const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
-        app.getBeverageAndPriceRange(selectedDrink, usersPriceRange)
+        var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+        app.getBeverageAndPriceRange(selectedDrink, usersPriceRange);
         if (selectedDrink === 'White Wine' || selectedDrink === 'Red Wine') {
-            app.getWine(app.storeID, selectedDrink)
+            app.getWine(app.storeID, selectedDrink);
         } else {
-            app.getBeerCider(app.storeID)
-        }        
+            app.getBeerCider(app.storeID);
+        }
     });
 }; //on click end
 
 app.getBeverageAndPriceRange = function (drink, price) {
     if (drink === 'Red Wine') {
-        app.finalOptions.drink = 'red+wine'
+        app.finalOptions.drink = 'red+wine';
     } else if (drink === 'White Wine') {
-        app.finalOptions.drink = 'white+wine'
+        app.finalOptions.drink = 'white+wine';
     } else if (drink === 'Beer') {
-        app.finalOptions.drink = 'beer'
+        app.finalOptions.drink = 'beer';
     } else {
-        app.finalOptions.drink = 'cider'
+        app.finalOptions.drink = 'cider';
     }
     if (drink === 'Red Wine' || drink === 'White Wine') {
         if (price === 'budget') {
@@ -199,19 +184,21 @@ app.getBeverageAndPriceRange = function (drink, price) {
             app.finalOptions.lowPoint = app.userOptions.brew.budget.lowpoint;
             app.finalOptions.highPoint = app.userOptions.brew.budget.highpoint;
         } else if (price === 'cheap') {
-            app.finalOptions.lowPoint = app.userOptions.brew.cheap.lowpoint
+            app.finalOptions.lowPoint = app.userOptions.brew.cheap.lowpoint;
             app.finalOptions.highPoint = app.userOptions.brew.cheap.highpoint;
         } else if (price === 'pricy') {
-            app.finalOptions.lowPoint = app.userOptions.brew.pricy.lowpoint
+            app.finalOptions.lowPoint = app.userOptions.brew.pricy.lowpoint;
             app.finalOptions.highPoint = app.userOptions.brew.pricy.highpoint;
         } else {
-            app.finalOptions.lowPoint = app.userOptions.brew.expensive.lowpoint
+            app.finalOptions.lowPoint = app.userOptions.brew.expensive.lowpoint;
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
     }
-}
+    console.log(app.finalOptions);
+};
 
-app.init = function () { // Everything gets called inside of this function    
+app.init = function () {
+    // Everything gets called inside of this function    
     app.events();
 };
 
