@@ -9,7 +9,33 @@ section.result {
                 width: 30%;
             }
         }        
+section.result {
+    h2 {
+        @include fontSize(20);
+        margin-top: 25px;      
+    }
+    .results-container {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media (min-width: 680px) {
+            display: flex;
+            flex-wrap: row wrap;            
+        }
+        .userResult {
+            margin: 0 auto;
+            width: 100%;
+            padding: 10px 0;
+        }
         h4 {
+            text-align: center;
+            @include fontSize(14);
+        }
+        h2 {
+            @include fontSize(15);
+            text-align: center;  
             @include fontSize(14);
             text-align: center;    
             font-weight: normal;  

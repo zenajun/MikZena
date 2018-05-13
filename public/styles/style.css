@@ -199,9 +199,30 @@ input[type=submit] {
   input[type=submit]:hover {
     border: 5px solid #da810f; }
 
+
 section.result .results-container {
   margin: 0 auto; }
   @media (min-width: 1000px) {
+section.result h2 {
+  font-size: 20px;
+  font-size: 2rem;
+  margin-top: 25px; }
+section.result .results-container {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  @media (min-width: 680px) {
     section.result .results-container {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -214,7 +235,20 @@ section.result .results-container {
               align-items: flex-end; }
       section.result .results-container .userResult {
         width: 30%; } }
+      -ms-flex-wrap: row wrap;
+          flex-wrap: row wrap; } }
+  section.result .results-container .userResult {
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px 0; }
   section.result .results-container h4 {
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem; }
+  section.result .results-container h2 {
+    font-size: 15px;
+    font-size: 1.5rem;
+    text-align: center; }
     font-size: 14px;
     font-size: 1.4rem;
     text-align: center;
