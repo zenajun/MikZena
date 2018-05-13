@@ -107,8 +107,7 @@ app.displayInfo = function (store) {
         const resultsContainer = `<div class="userResult">
                 <h2 class="userDrink">${app.selectedDrinks[i].name}</h2>
                 <p class="userPrice">$${((app.selectedDrinks[i].price_in_cents) / 100).toFixed(2)}</p>
-                <img src = "${app.selectedDrinks[i].image_url}"
-                alt="${app.selectedDrinks[i].tags}">
+                <img src ="${app.selectedDrinks[i].image_url}" alt="${app.selectedDrinks[i].tags}">
                 <p class="drinkNotes"></p>
             </div>`
         $('.result .results-container').append(resultsContainer);
