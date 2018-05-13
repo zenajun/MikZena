@@ -200,7 +200,8 @@ input[type=submit] {
     border: 5px solid #da810f; }
 
 section.result .results-container {
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 100px; }
   @media (min-width: 1000px) {
     section.result .results-container {
       display: -webkit-box;
@@ -215,12 +216,17 @@ section.result .results-container {
       section.result .results-container .userResult {
         width: 30%; } }
 
+section.result h2 {
 section.result section.result h2 {
   font-size: 20px;
   font-size: 2rem;
   margin-top: 25px; }
 
+
+section.result .results-container {
+
 section.result section.result .results-container {
+
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -259,7 +265,11 @@ section.result section.result .results-container {
     text-align: center;
     font-weight: normal; }
     @media (min-width: 1000px) {
+
+      section.result .results-container h2 {
+
       section.result section.result .results-container h2 {
+
         font-size: 18px;
         font-size: 1.8rem; } }
   section.result section.result .results-container p.userPrice {
@@ -277,6 +287,60 @@ html {
 body {
   font-size: 16px;
   font-size: 1.6rem; }
+
+
+header {
+  background: black;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px; }
+  header img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 200px; }
+
+form {
+  margin: 0 auto; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0px;
+  font-size: 15px;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
+
+.formInfo {
+  padding-bottom: 15px; }
+  .formInfo h3 {
+    font-size: 20px;
+    font-size: 2rem;
+    margin: 15px 0px 10px;
+    padding: 15px 20px 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
+
+h5 {
+  font-size: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; }
+
+.selectPrice h2 {
+  margin-bottom: 20px; }
+
   body header {
     background-color: black;
     height: 100%;
@@ -324,6 +388,7 @@ body {
   body .selectPrice h2 {
     margin-bottom: 20px; }
 
+
 .selectPrice h2 {
   margin-bottom: 20px; }
 
@@ -334,3 +399,8 @@ footer {
     font-size: 0.8rem;
     text-align: center;
     margin: 5px; }
+
+@media (min-width: 1000px) {
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto; } }
