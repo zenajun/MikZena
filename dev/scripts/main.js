@@ -113,8 +113,7 @@ app.displayInfo = function() {
                 <img src ="${app.selectedDrinks[i].image_url}">
             </div>`
         $('section.result').append(resultsContainer);
-    //     console.log(app.selectedDrinks[i].name, app.selectedDrinks[i].price_in_cents);
-    //     //  app.selectedDrinks[i].name
+   
     }
 }
 
