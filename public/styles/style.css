@@ -195,7 +195,8 @@ input[type=submit] {
 
 section.result h2 {
   font-size: 20px;
-  font-size: 2rem; }
+  font-size: 2rem;
+  margin-top: 25px; }
 
 section.result .results-container {
   margin: 0 auto;
@@ -212,10 +213,21 @@ section.result .results-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
+  @media (min-width: 680px) {
+    section.result .results-container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: row wrap;
+          flex-wrap: row wrap; } }
   section.result .results-container .userResult {
     margin: 0 auto;
     width: 100%;
     padding: 10px 0; }
+  section.result .results-container h4 {
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem; }
   section.result .results-container h2 {
     font-size: 15px;
     font-size: 1.5rem;
