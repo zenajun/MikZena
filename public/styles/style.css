@@ -132,6 +132,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 form {
+  width: 100%;
   font-family: 'Montserrat', sans-serif;
   text-align: center; }
   form input[type="radio"] {
@@ -144,28 +145,39 @@ form {
   form input#postalCode {
     width: 80px;
     margin-left: 20px; }
+  form label[for="postalCode"] {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
   form .userSelection {
     margin: 0 auto;
-    height: 50px; }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
   form .selectCity {
     padding-bottom: 15px; }
   form label {
-    padding: 15px;
-    margin: 20px;
+    margin: 10px;
+    padding: 10px;
     border: 5px solid transparent;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
   form .selectDrink label {
-    max-width: 75px;
-    padding: 40px 10px 5px;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     border: 5px solid transparent;
-    min-height: 75px; }
+    -ms-flex-preferred-size: calc(50% - 30px);
+        flex-basis: calc(50% - 30px);
+    margin: 15px;
+    padding: 10px; }
   form .selectPrice input[type="radio"]:checked + label,
   form .selectDrink input[type="radio"]:checked + label {
     border: 5px solid #da810f; }
@@ -202,7 +214,8 @@ section.result .results-container {
           align-items: center; }
   section.result .results-container .userResult {
     margin: 0 auto;
-    width: 100%; }
+    width: 100%;
+    padding: 10px 0; }
   section.result .results-container h2 {
     font-size: 15px;
     font-size: 1.5rem;
@@ -231,12 +244,11 @@ body header {
           align-items: center; }
   body header img {
     display: block;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
     max-height: 200px; }
 
 body form {
-  max-width: 900px;
   margin: 0 auto; }
 
 body h2 {
