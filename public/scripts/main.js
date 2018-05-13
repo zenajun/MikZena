@@ -51,13 +51,24 @@ app.userOptions = {
     }
 };
 
+
 app.finalOptions = {};
+<<<<<<< HEAD
 app.selectedDrinks = [];
+=======
+
+
+>>>>>>> 9ca02a19fa33744d5e78d40f6f7e31788ad1ceb8
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
 app.getWine = function (store, wineColor) {
     return $.ajax({
+<<<<<<< HEAD
         url: 'http://lcboapi.com/products?q=' + app.finalOptions.drink + '&per_page=100&=' + store,
+=======
+
+        url: 'http://lcboapi.com/products?q=' + wineColour + '&per_page=100&=' + store,
+>>>>>>> 9ca02a19fa33744d5e78d40f6f7e31788ad1ceb8
         dataType: 'jsonp',
         method: 'GET',
         headers: {
@@ -68,9 +79,29 @@ app.getWine = function (store, wineColor) {
         var drinkArray = [];
         app.selectedDrinks = [];
         wines.filter(function (wine) {
+<<<<<<< HEAD
             if (wine.secondary_category = wineColor && wine.price_in_cents > app.finalOptions.lowPoint && wine.price_in_cents < app.finalOptions.highPoint) {
                 drinkArray.push(wine);
             }
+=======
+            if (wine.secondary_category = 'White Wine' && wine.price_in_cents < 1000) {}
+
+        url: 'http://lcboapi.com/products?primary_category=' + drink + '&per_page=100&=' + store,
+        dataType: 'jsonp',
+        method: 'GET',
+        headers: { Authorization: app.key }
+    }).then(function (drink) {
+
+        //   console.log(drink);
+        var listOfDrinks = drink.result;
+        var drinkChoices = [];
+        //filter through all the drink options and the find the 5 that match the parameters and push into the new array
+        listOfDrinks.filter(function (drink) {
+            if (drink.primary_category === 'Wine' && drink.secondary_category === selectedDrink) {} else if (drink.primary_category === 'Wine' && drink.secondary_category === selectedDrink) {
+                console.log(drink.secondary_category);
+            }
+
+>>>>>>> 9ca02a19fa33744d5e78d40f6f7e31788ad1ceb8
         });
         for (var i = 0; i < 3; i++) {
             app.randomDrank(drinkArray);
@@ -132,6 +163,9 @@ app.getStores = function (geo) {
     }).then(function (store) {
         var $store = store.result[0]; // Get the nearest store
         app.storeID = $store.id;
+
+        //    console.log($store.name, $store.id);     
+
     });
 };
 
@@ -145,6 +179,7 @@ app.events = function () {
         var usersPriceRange = $('.selectPrice input[type="radio"]:checked').val();
 
         var selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
+
         app.getBeverageAndPriceRange(selectedDrink, usersPriceRange);
         if (selectedDrink === 'White Wine' || selectedDrink === 'Red Wine') {
             app.getWine(app.storeID, selectedDrink);
@@ -161,9 +196,27 @@ app.getBeverageAndPriceRange = function (drink, price) {
         app.finalOptions.drink = 'white+wine';
     } else if (drink === 'Beer') {
         app.finalOptions.drink = 'beer';
+
+        app.getProduct(selectedDrink);
+        // console.log(selectedDrink);
+
+        app.beerOrWineChoice(selectedDrink);
+        app.getProduct(app.storeID);
+    });
+}; //on click end
+
+
+// based of the drink and price the user selects we have to use that informtion to iterate through the the object array we made
+app.beerOrWineChoice = function (wineorbeer) {
+    var beverageChoice = [];
+
+    if (wineorbeer === 'Red Wine' || wineorbeer === 'White Wine') {
+        beverageChoice.push(app.userOptions['wine']);
+
     } else {
         app.finalOptions.drink = 'cider';
     }
+
     if (drink === 'Red Wine' || drink === 'White Wine') {
         if (price === 'budget') {
             app.finalOptions.lowPoint = app.userOptions.wine.budget.lowpoint;
@@ -191,9 +244,35 @@ app.getBeverageAndPriceRange = function (drink, price) {
         } else {
             app.finalOptions.lowPoint = app.userOptions.brew.expensive.lowpoint;
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
+
+    // passing array of bevy choice into this
+    app.matchingChoice(beverageChoice[0]);
+    // console.log(beverageChoice[0]);
+};
+
+// beverage choice turned into choice
+// we looped through the bevychoice and to find the first item in the array, drink and then we matched it with the users choice and pulled our objects info
+app.matchingChoice = function (choice) {
+    // this is to refresh the array so user can change their option
+    app.finalOptions = [];
+
+    for (var i = 0; i < choice.length; i = i + 1) {
+        var userChoice = choice[i].option;
+
+        if (userChoice === app.selectedPrice) {
+            app.finalOptions.push(choice[i]);
+
         }
     }
     console.log(app.finalOptions);
+
+
+    // This number stores the price variable from the arrays
+    var lowPoint = app.finalOptions[0].lowpoint;
+    var highPoint = app.finalOptions[0].highpoint;
+    // Now calling the APfile:///Users/mikaelascornaienchi/Documents/Sites/2018WinterBootcamp/week5/day5-gulp/movieCodeAlong/index.html?I this runs when we start the event to give us the information from the low and high point
+    app.getProduct();
+
 };
 
 app.init = function () {

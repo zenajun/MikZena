@@ -46,7 +46,7 @@ app.userOptions = {
             lowpoint: 2000,
             highpoint: 100000
         }
-    }    
+    }
 };
 
 app.finalOptions = {};
@@ -54,7 +54,7 @@ app.selectedDrinks = [];
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
 
-app.getWine = function(store, wineColor) {
+app.getWine = function (store, wineColor) {
     return $.ajax({
         url: `http://lcboapi.com/products?q=${app.finalOptions.drink}&per_page=100&=${store}`,
         dataType: 'jsonp',
@@ -66,11 +66,11 @@ app.getWine = function(store, wineColor) {
         const wines = res.result;
         const drinkArray = [];
         app.selectedDrinks = [];
-        wines.filter(function(wine) {   
+        wines.filter(function (wine) {
             if (wine.secondary_category = wineColor && wine.price_in_cents > app.finalOptions.lowPoint && wine.price_in_cents < app.finalOptions.highPoint) {
-                drinkArray.push(wine);                 
-            }            
-        }); 
+                drinkArray.push(wine);
+            }
+        });
         for (let i = 0; i < 3; i++) {
             app.randomDrank(drinkArray);
         }
@@ -78,33 +78,33 @@ app.getWine = function(store, wineColor) {
     });
 }
 
-app.getBeerCider = function(store) {
-   return $.ajax({
-       url: `http://lcboapi.com/products?q=${app.finalOptions.drink}&per_page=100&=${store}`,
-       dataType: 'jsonp',
-       method: 'GET',
-       headers: {
-           Authorization: app.key
-       }
-   }).then(function (res) {
-       const beersCiders = res.result
-       const drinkArray = [];
-       app.selectedDrinks = [];
-       beersCiders.filter(function (beerCider) {
-           if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
-               drinkArray.push(beerCider);               
-               // console.log(beerCider.name, beerCider.img_url, beerCider.price_in_cents);               
-               // app.displayInfo(beerCider.name)
+app.getBeerCider = function (store) {
+    return $.ajax({
+        url: `http://lcboapi.com/products?q=${app.finalOptions.drink}&per_page=100&=${store}`,
+        dataType: 'jsonp',
+        method: 'GET',
+        headers: {
+            Authorization: app.key
+        }
+    }).then(function (res) {
+        const beersCiders = res.result
+        const drinkArray = [];
+        app.selectedDrinks = [];
+        beersCiders.filter(function (beerCider) {
+            if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
+                drinkArray.push(beerCider);
+                // console.log(beerCider.name, beerCider.img_url, beerCider.price_in_cents);               
+                // app.displayInfo(beerCider.name)
             }
-        });        
+        });
         for (let i = 0; i < 3; i++) {
             app.randomDrank(drinkArray);
-        }         
+        }
         app.displayInfo();
-   });
+    });
 }
 
-app.displayInfo = function() {
+app.displayInfo = function () {
     $('section.result').empty();
     for (let i = 0; i < 3; i++) {
         const resultsContainer = `<div class="userResult">
@@ -113,13 +113,13 @@ app.displayInfo = function() {
                 <img src ="${app.selectedDrinks[i].image_url}">
             </div>`
         $('section.result').append(resultsContainer);
-   
+
     }
 }
 
-app.randomDrank = function(array) {
-    const oneDrank = Math.floor(Math.random() * array.length);   
-    array.splice(array[oneDrank], 1);    
+app.randomDrank = function (array) {
+    const oneDrank = Math.floor(Math.random() * array.length);
+    array.splice(array[oneDrank], 1);
     app.selectedDrinks.push(array[oneDrank]);
 }
 // this finds the closest store based on postal code, get the  store on submit of the app.events
@@ -133,7 +133,7 @@ app.getStores = function (geo) {
         dataType: 'jsonp'
     }).then(function (store) {
         const $store = store.result[0]; // Get the nearest store
-        app.storeID = $store.id;  
+        app.storeID = $store.id;
     });
 };
 
@@ -143,20 +143,20 @@ app.events = function () {
         //Gives us user postal code and finds the closest store
         const $postalCode = $('#postalCode').val().replace(' ', '+');
         app.getStores($postalCode);
-        
+
         const usersPriceRange = $('.selectPrice input[type="radio"]:checked').val();
-       
+
         const selectedDrink = $('.selectDrink input[type="radio"]:checked').attr('value');
         app.getBeverageAndPriceRange(selectedDrink, usersPriceRange)
         if (selectedDrink === 'White Wine' || selectedDrink === 'Red Wine') {
             app.getWine(app.storeID, selectedDrink)
         } else {
             app.getBeerCider(app.storeID)
-        }        
+        }
     });
 }; //on click end
 
-app.getBeverageAndPriceRange = function(drink, price) {
+app.getBeverageAndPriceRange = function (drink, price) {
     if (drink === 'Red Wine') {
         app.finalOptions.drink = 'red+wine'
     } else if (drink === 'White Wine') {
@@ -165,11 +165,11 @@ app.getBeverageAndPriceRange = function(drink, price) {
         app.finalOptions.drink = 'beer'
     } else {
         app.finalOptions.drink = 'cider'
-    }    
+    }
     if (drink === 'Red Wine' || drink === 'White Wine') {
         if (price === 'budget') {
             app.finalOptions.lowPoint = app.userOptions.wine.budget.lowpoint;
-            app.finalOptions.highPoint = app.userOptions.wine.budget.highpoint;     
+            app.finalOptions.highPoint = app.userOptions.wine.budget.highpoint;
         } else if (price === 'cheap') {
             app.finalOptions.lowPoint = app.userOptions.wine.cheap.lowpoint;
             app.finalOptions.highPoint = app.userOptions.wine.cheap.highpoint;
@@ -179,7 +179,7 @@ app.getBeverageAndPriceRange = function(drink, price) {
         } else {
             app.finalOptions.lowPoint = app.userOptions.wine.expensive.lowpoint;
             app.finalOptions.highPoint = app.userOptions.wine.expensive.highpoint;
-        }    
+        }
     } else {
         if (price === 'budget') {
             app.finalOptions.lowPoint = app.userOptions.brew.budget.lowpoint;
@@ -194,11 +194,11 @@ app.getBeverageAndPriceRange = function(drink, price) {
             app.finalOptions.lowPoint = app.userOptions.brew.expensive.lowpoint
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
-    }       
-    console.log(app.finalOptions);   
+    }
+    console.log(app.finalOptions);
 }
 
-app.init = function () {    // Everything gets called inside of this function    
+app.init = function () { // Everything gets called inside of this function    
     app.events();
 };
 
