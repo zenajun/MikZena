@@ -1,15 +1,21 @@
 section.result {   
     .results-container {
         margin: 0 auto;
-        @media (min-width: 680px) {
+        @media (min-width: 1000px) {
             display: flex;
             justify-content: space-between;
-            width: 30%;
-        }
+            align-items: flex-end;
+            .userResult {
+                width: 30%;
+            }
+        }        
         h4 {
             @include fontSize(14);
             text-align: center;    
-            font-weight: normal;    
+            font-weight: normal;  
+            @media (min-width: 1000px) {
+                @include fontSize(18);
+            }  
         }
         p.userPrice {
             text-align: center;

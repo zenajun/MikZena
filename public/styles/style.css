@@ -179,6 +179,11 @@ form {
         flex-basis: calc(50% - 30px);
     margin: 15px;
     padding: 10px; }
+    @media (min-width: 640px) {
+      form .selectDrink label {
+        -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+        margin: 5px 25px; } }
   form .selectPrice input[type="radio"]:checked + label,
   form .selectDrink input[type="radio"]:checked + label {
     border: 5px solid #da810f; }
@@ -196,7 +201,7 @@ input[type=submit] {
 
 section.result .results-container {
   margin: 0 auto; }
-  @media (min-width: 680px) {
+  @media (min-width: 1000px) {
     section.result .results-container {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -204,12 +209,20 @@ section.result .results-container {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between;
-      width: 30%; } }
+      -webkit-box-align: end;
+          -ms-flex-align: end;
+              align-items: flex-end; }
+      section.result .results-container .userResult {
+        width: 30%; } }
   section.result .results-container h4 {
     font-size: 14px;
     font-size: 1.4rem;
     text-align: center;
     font-weight: normal; }
+    @media (min-width: 1000px) {
+      section.result .results-container h4 {
+        font-size: 18px;
+        font-size: 1.8rem; } }
   section.result .results-container p.userPrice {
     text-align: center;
     font-weight: bold; }
@@ -219,56 +232,57 @@ section.result .results-container {
     margin: 0 auto;
     border: 10px solid black; }
 
-body header {
-  background-color: black;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  body header img {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto;
-    max-height: 200px; }
+html {
+  font-size: 62.5%; }
 
-body form {
-  margin: 0 auto; }
-
-body h2 {
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  margin: 0px;
-  font-size: 15px;
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-
-body .formInfo {
-  padding-bottom: 15px; }
-  body .formInfo h3 {
-    font-size: 20px;
-    font-size: 2rem;
+body {
+  font-size: 16px;
+  font-size: 1.6rem; }
+  body header {
+    background-color: black;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    body header img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+      max-height: 200px; }
+  body form {
+    margin: 0 auto; }
+  body h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
     margin: 0px;
-    padding: 15px 20px 10px;
+    font-size: 15px;
+    font-size: 1.5rem;
+    padding: 10px 20px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-
-body h5 {
-  font-size: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif; }
-
-body .selectPrice h2 {
-  margin-bottom: 20px; }
+  body .formInfo {
+    padding-bottom: 15px; }
+    body .formInfo h3 {
+      font-size: 20px;
+      font-size: 2rem;
+      margin: 0px;
+      padding: 15px 20px 10px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
+  body h5 {
+    font-size: 10px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif; }
+  body .selectPrice h2 {
+    margin-bottom: 20px; }
 
 .selectPrice h2 {
   margin-bottom: 20px; }
