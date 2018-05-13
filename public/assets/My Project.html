@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>My Project</title>
+	<!-- Google fonts -->
+	<link href="./My Project_files/css" rel="stylesheet">
+	<link rel="stylesheet" href="./My Project_files/style.css">
+</head>
+<body cz-shortcut-listen="true"><script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.24.4'><\/script>".replace("HOST", location.hostname));
+//]]></script><script async="" src="./My Project_files/browser-sync-client.js"></script>
+
+
+	<div class="wrapper">
+		<header class="hero">
+			<img src="./My Project_files/hero.jpg" alt="Wine &amp; Beer">
+		</header>
+		<div class="container">
+			<form action="http://localhost:3000/#" class="userInput">
+				<h3>Need a drink? Choice is hard, let us help!</h3>
+				<h5>Just fill out a few questions and we'll pick some options for you, available at your closest LCBO.</h5>
+				<!-- City Question -->
+				<div class="selectCity">
+					<h2>Where are you?</h2>
+					<div class="userInput">
+						<label for="postalCode">Enter your postal code</label>
+						<input type="text" placeholder="M5V 2A9" name="question1" id="postalCode" pattern="[L-Pl-p][0-9][A-Za-z] [0-9][A-Za-z][0-9]" value="M5V 2A9">
+					</div>
+				</div>
+		
+				<!-- Price Question -->
+				<div class="selectPrice">
+					<h2>Budget!</h2>
+					<div class="userSelection">
+						<label for="budget">$</label>
+						<input type="radio" name="price" id="budget" value="budget">
+			
+						<label for="cheap">$$</label>
+						<input type="radio" name="price" id="cheap" value="cheap">
+			
+						<label for="pricy">$$$</label>
+						<input type="radio" name="price" id="pricy" value="pricy">
+			
+						<label for="expensive">$$$$</label>
+						<input type="radio" name="price" id="expensive" value="expensive">
+					</div>
+				</div>
+		
+				<!-- Drink Question -->
+				<div class="selectDrink">
+					<h2>Poison!</h2>
+					<div class="userSelection">
+						<label for="beer"><img src="./My Project_files/beer.png" alt="Beer Glass"></label>
+						<input type="radio" name="drink" id="beer" value="Beer">
+			
+						<label for="redwine"><img src="./My Project_files/redwine.png" alt="Red Wine Glass"></label>
+						<input type="radio" name="drink" id="redwine" value="Red Wine">
+			
+						<label for="whitewine"><img src="./My Project_files/whitewine.png" alt="White Wine Glass"></label>
+						<input type="radio" name="drink" id="whitewine" value="White Wine">
+			
+						<label for="cider"><img src="./My Project_files/cider.png" alt="Cider Glass"></label>
+						<input type="radio" name="drink" id="cider" value="Ciders">
+					</div>
+				</div>
+				
+				<!-- Submit Button -->
+				<input type="submit" value="Find me a drink!" class="submit" id="result">
+			</form>
+		</div>
+	</div>
+
+	<!-- Result Section -->
+	<section class="result"><div class="userResult">
+                <h2 class="userDrink">Thornbury Cranberry Apple Cider Keg</h2>
+                <p class="userPrice">$233.65</p>
+                <img src="./My Project_files/null">
+            </div><div class="userResult">
+                <h2 class="userDrink">Strongbow Mixer Pack</h2>
+                <p class="userPrice">$22.65</p>
+                <img src="./My Project_files/full.jpeg">
+            </div><div class="userResult">
+                <h2 class="userDrink">Thornbury Cranberry Apple Cider Keg</h2>
+                <p class="userPrice">$233.65</p>
+                <img src="./My Project_files/null">
+            </div></section>
+	<footer>
+		<p>© 2018 Made by Zena Jun &amp; Mikaela Scornaienchi</p>
+		<p>Wine glass by Paul Berthelon, Beer glass by by Erin Agnoli, Cider glass by Viktor Ostrovsky</p>
+	</footer>
+
+	<!-- jQuery Script -->
+	<script src="./My Project_files/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+	<!-- My script -->
+	<script src="./My Project_files/main.js"></script>
+
+
+</body></html>

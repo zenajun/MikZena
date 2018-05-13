@@ -1,3 +1,14 @@
+section.result {   
+    .results-container {
+        margin: 0 auto;
+        @media (min-width: 1000px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            .userResult {
+                width: 30%;
+            }
+        }        
 section.result {
     h2 {
         @include fontSize(20);
@@ -11,8 +22,7 @@ section.result {
         align-items: center;
         @media (min-width: 680px) {
             display: flex;
-            flex-wrap: row wrap;
-            
+            flex-wrap: row wrap;            
         }
         .userResult {
             margin: 0 auto;
@@ -28,7 +38,10 @@ section.result {
             text-align: center;  
             @include fontSize(14);
             text-align: center;    
-            font-weight: normal;    
+            font-weight: normal;  
+            @media (min-width: 1000px) {
+                @include fontSize(18);
+            }  
         }
         p.userPrice {
             text-align: center;
