@@ -105,6 +105,7 @@ app.displayInfo = function (store) {
 
     for (let i = 0; i < 3; i++) {
         const resultsContainer = `<div class="userResult">
+
                 <h4 class="userDrink">${app.selectedDrinks[i].name} <span>$${((app.selectedDrinks[i].price_in_cents) / 100).toFixed(2)}</span></h4>
                 <img src ="${app.selectedDrinks[i].image_url}" alt="${app.selectedDrinks[i].tags}">
                 <p class="drinkNotes"></p>
