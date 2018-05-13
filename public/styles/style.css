@@ -266,6 +266,47 @@ section.result .results-container {
     margin: 0 auto;
     border: 10px solid black; }
 
+<<<<<<< HEAD
+body header {
+  background-color: black;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px; }
+  body header img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 200px; }
+
+body form {
+  margin: 0 auto; }
+
+body h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  margin: 0px;
+  font-size: 15px;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
+
+body .formInfo {
+  padding-bottom: 15px; }
+  body .formInfo h3 {
+    font-size: 20px;
+    font-size: 2rem;
+    margin: 15px 0px 10px;
+    padding: 15px 20px 10px;
+=======
 html {
   font-size: 62.5%; }
 
@@ -299,6 +340,7 @@ body {
     font-size: 15px;
     font-size: 1.5rem;
     padding: 10px 20px;
+>>>>>>> 59e989defcb0565cc7078f5ada5a17f20f94895e
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
   body .formInfo {
     padding-bottom: 15px; }
@@ -320,3 +362,11 @@ body {
 
 .selectPrice h2 {
   margin-bottom: 20px; }
+
+footer {
+  padding: 15px; }
+  footer p {
+    font-size: 8px;
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 5px; }
