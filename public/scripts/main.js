@@ -129,14 +129,13 @@ app.getStores = function (geo) {
         var $store = store.result[0]; // Get the nearest store
         app.storeLocation = $store;
         app.storeID = $store.id;
-        console.log(store);
         app.displayLocation();
     });
 };
 
 app.displayLocation = function () {
     $('section.locationResult').empty();
-    var locationResultContainer = '<div class="userResult">\n            // <h2 class="userDrink">' + app.storeLocation.address_line_1 + '</h2>\n            <h2 class="userDrink">' + app.storeLocation.city + '</h2>\n        </div>';
+    var locationResultContainer = '<div class="userResult">\n            <h2 class="userDrink">' + app.storeLocation.address_line_1 + ', ' + app.storeLocation.city + '</h2>\n            <h2 class="userDrink">' + app.storeLocation.city + '</h2>\n        </div>';
     $('section.locationResult').append(locationResultContainer);
 
     $('html, body').animate({
