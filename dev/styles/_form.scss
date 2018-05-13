@@ -6,13 +6,14 @@ form {
     display: none;
   }
   .userInput label {
-    padding: 5px;
+    padding: 0;
+    margin: 0;
     border: none;
     box-shadow: none;
   }
 	input#postalCode {
-		width: 80px;
-		margin-left: 20px;
+    width: 100px;
+    margin-left: 5px;
   }
   label[for="postalCode"] {
     box-shadow: none;
@@ -41,6 +42,10 @@ form {
     flex-basis: calc(50% - 30px);
     margin: 15px;
     padding: 10px;
+    @media (min-width: 640px) {
+      flex-basis: 0;
+      margin: 5px 25px;
+    }
   } 
   .selectPrice input[type="radio"]:checked+label,
   .selectDrink input[type="radio"]:checked+label  {

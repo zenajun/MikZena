@@ -8,8 +8,12 @@ $primary: #da810f;
 @import 'form';
 @import 'results';
 
-body {	
+html {
+	font-size: 62.5%;
+}
 
+body {	
+	@include fontSize(16);
 	header {
 		background-color: black;
 		height: 100%;
