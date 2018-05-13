@@ -106,7 +106,7 @@ app.displayInfo = function (store) {
     $('.result .results-container').empty();
 
     for (var i = 0; i < 3; i++) {
-        var resultsContainer = '<div class="userResult">\n                <h4 class="userDrink">' + app.selectedDrinks[i].name + ' <span>$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '<span></h4>\n                <h4 class="userDrink">' + app.selectedDrinks[i].name + ' <span>$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</span></h4>\n                <img src ="' + app.selectedDrinks[i].image_url + '" alt="' + app.selectedDrinks[i].tags + '">\n                <p class="drinkNotes"></p>\n            </div>';
+        var resultsContainer = '<div class="userResult">\n                <h4 class="userDrink">' + app.selectedDrinks[i].name + ' <span>$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '<span></h4>\n                <img src ="' + app.selectedDrinks[i].image_url + '" alt="' + app.selectedDrinks[i].tags + '">\n                <p class="drinkNotes"></p>\n            </div>';
         $('.result .results-container').append(resultsContainer);
     }
 };
