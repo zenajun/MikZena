@@ -103,10 +103,11 @@ app.getBeerCider = function (store) {
 };
 
 app.displayInfo = function (store) {
-    $('section.result').empty();
+    $('.result .results-container').empty();
+
     for (var i = 0; i < 3; i++) {
-        var resultsContainer = '<div class="userResult">\n                <h2 class="userDrink">' + app.selectedDrinks[i].name + '</h2>\n                <p class="userPrice">$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</p>\n                <img src ="' + app.selectedDrinks[i].image_url + '">\n            </div>';
-        $('section.result').append(resultsContainer);
+        var resultsContainer = '<div class="userResult">\n                <h2 class="userDrink">' + app.selectedDrinks[i].name + '</h2>\n                <p class="userPrice">$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</p>\n                <img src = "' + app.selectedDrinks[i].image_url + '"\n                alt="' + app.selectedDrinks[i].tags + '">\n                <p class="drinkNotes"></p>\n            </div>';
+        $('.result .results-container').append(resultsContainer);
     }
 };
 

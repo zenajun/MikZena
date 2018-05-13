@@ -1,0 +1,30 @@
+section.result {
+    h2 {
+        @include fontSize(20);
+    }
+    .results-container {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .userResult {
+            margin: 0 auto;
+            width: 100%;
+        }
+        h2 {
+            @include fontSize(15);
+            text-align: center;        
+        }
+        p.userPrice {
+            text-align: center;
+            font-weight: bold;
+        }
+        img {
+        max-width: 250px;
+        display: block;
+        margin: 0 auto;
+        border: 10px solid black;
+        }
+    }
+}
