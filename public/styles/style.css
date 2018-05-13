@@ -270,12 +270,14 @@ body .formInfo {
     margin: 0px;
     padding: 15px 20px 10px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-  body .formInfo h5 {
-    font-size: 10px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin: 0 auto;
-    font-family: 'Montserrat', sans-serif; }
+
+body h5 {
+  font-size: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; }
 
 body .selectPrice h2 {
   margin-bottom: 20px; }
