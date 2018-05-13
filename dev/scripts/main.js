@@ -138,7 +138,6 @@ app.getStores = function (geo) {
     }).then(function (store) {
         const $store = store.result[0]; // Get the nearest store
         app.storeID = $store.id;  
-        // app.storeAddress = $storeA
         console.log($store);
         
     });
