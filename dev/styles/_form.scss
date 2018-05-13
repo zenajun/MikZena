@@ -2,7 +2,7 @@ form {
 	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 	input[type="radio"] {
-		display: none;
+    display: none;
 	}
 	input#postalCode {
 		width: 80px;
@@ -16,7 +16,7 @@ form {
     padding-bottom: 15px;
   }
 	.selectPrice {
-		 label {
+		label {
 			padding: 15px;
 			margin: 20px;
 			border: 5px solid $primary;
@@ -28,12 +28,9 @@ form {
       top: 3px;
       box-shadow: 0px 5px 5px $primary;
     }
-    label:hover {
-      border: 5px solid $#DCDCDC;
-    }
   }
-  input[type=radio]:checked {
-    border: 5px solid black;
+  input[type=radio]:checked ~ label {
+    border: 5px solid #DCDCDC;
   }
   .selectDrink {
     label {
@@ -51,17 +48,15 @@ form {
       top: 3px;
       box-shadow: 0px 5px 5px $primary;
     }
-    label img:hover {
-      background-color: #DCDCDC;
-    }
   }
 }
 input[type=submit] {
   border: 5px solid $primary;
   margin: 42px 0px 10px;
   padding: 10px;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
   &:hover {
-    border: 5px solid black;
+    border: 5px solid #DCDCDC;
   }
 }
 @media (max-width: 420px) {
