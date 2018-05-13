@@ -7,7 +7,6 @@ Get the Product id and use that to find the Store
 */
 // object with two arrays, the values of the selections that users can make
 
-// App
 const app = {};
 
 app.userOptions = {
@@ -53,7 +52,6 @@ app.finalOptions = {};
 app.selectedDrinks = [];
 app.key = 'MDpjYzUzZmIyZS01MjRjLTExZTgtODEyNy1jMzA5ZjdlMWFjN2I6VVJVT3V0NTlWSXAyTU42MXp3V0xja0dSVmJ4YVhhd014bm1k';
 
-
 app.getWine = function (store, wineColor) {
     return $.ajax({
         url: `http://lcboapi.com/products?q=${app.finalOptions.drink}&per_page=100&=${store}`,
@@ -93,8 +91,6 @@ app.getBeerCider = function (store) {
         beersCiders.filter(function (beerCider) {
             if (beerCider.price_in_cents > app.finalOptions.lowPoint && beerCider.price_in_cents < app.finalOptions.highPoint) {
                 drinkArray.push(beerCider);
-                // console.log(beerCider.name, beerCider.img_url, beerCider.price_in_cents);               
-                // app.displayInfo(beerCider.name)
             }
         });
         for (let i = 0; i < 3; i++) {
@@ -104,7 +100,7 @@ app.getBeerCider = function (store) {
     });
 }
 
-app.displayInfo = function () {
+app.displayInfo = function (store) {
     $('section.result').empty();
     for (let i = 0; i < 3; i++) {
         const resultsContainer = `<div class="userResult">
@@ -113,7 +109,6 @@ app.displayInfo = function () {
                 <img src ="${app.selectedDrinks[i].image_url}">
             </div>`
         $('section.result').append(resultsContainer);
-
     }
 }
 
@@ -122,8 +117,9 @@ app.randomDrank = function (array) {
     array.splice(array[oneDrank], 1);
     app.selectedDrinks.push(array[oneDrank]);
 }
+
 // this finds the closest store based on postal code, get the  store on submit of the app.events
-app.getStores = function (geo) {
+app.getStores = function(geo) {
     return $.ajax({
         url: `http://lcboapi.com/stores?&geo=${geo}`,
         headers: {
@@ -134,8 +130,23 @@ app.getStores = function (geo) {
     }).then(function (store) {
         const $store = store.result[0]; // Get the nearest store
         app.storeID = $store.id;
+        app.displayLocation();
     });
 };
+
+app.displayLocation = function () {
+    $('section.locationResult').empty();
+    const locationResultContainer = 
+        `<div class="userResult">
+            <h2 class="userDrink">${app.getStores.address_line_1}</h2>
+            <h2 class="userDrink">${app.getStores.city}</h2>
+        </div>`
+    $('section.locationResult').append(locationResultContainer);
+    
+    $('html, body').animate({
+        scrollTop: $("#locationResult").offset().top- 0
+    }, 500);
+}
 
 app.events = function () {
     $('form').on('submit', function (e) {
@@ -152,7 +163,7 @@ app.events = function () {
             app.getWine(app.storeID, selectedDrink)
         } else {
             app.getBeerCider(app.storeID)
-        }
+        }        
     });
 }; //on click end
 
@@ -195,7 +206,7 @@ app.getBeverageAndPriceRange = function (drink, price) {
             app.finalOptions.highPoint = app.userOptions.brew.expensive.highpoint;
         }
     }
-    console.log(app.finalOptions);
+    // console.log(app.finalOptions);
 }
 
 app.init = function () { // Everything gets called inside of this function    
