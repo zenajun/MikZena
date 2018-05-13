@@ -24,7 +24,7 @@ body {
 		}
 	}
 	form {
-		max-width: 900px;
+		// max-width: 900px;
 		margin: 0 auto;
 	}
 	h2 {
@@ -43,13 +43,15 @@ body {
 			padding: 15px 20px 10px;
 			text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 		}
-		h5 {
-			@include fontSize(10);
-			letter-spacing: 1px;
-			margin: 0 auto;
-			font-family: 'Montserrat', sans-serif;
-		}
 	}
+	h5 {
+		@include fontSize(10);
+		letter-spacing: 1px;
+		margin: 0 auto;
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+	}
+	
 	.selectPrice h2 {
 		margin-bottom: 20px;
 	}

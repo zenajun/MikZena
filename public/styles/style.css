@@ -142,8 +142,11 @@ form {
     -webkit-box-shadow: none;
             box-shadow: none; }
   form input#postalCode {
-    width: 80px;
-    margin-left: 20px; }
+    width: 90px;
+    margin-left: 20px;
+    border: 5px solid transparent;
+    -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3); }
   form .userSelection {
     margin: 0 auto;
     height: 50px; }
@@ -236,7 +239,6 @@ body header {
     max-height: 200px; }
 
 body form {
-  max-width: 900px;
   margin: 0 auto; }
 
 body h2 {
@@ -256,12 +258,14 @@ body .formInfo {
     margin: 0px;
     padding: 15px 20px 10px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-  body .formInfo h5 {
-    font-size: 10px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin: 0 auto;
-    font-family: 'Montserrat', sans-serif; }
+
+body h5 {
+  font-size: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; }
 
 body .selectPrice h2 {
   margin-bottom: 20px; }
