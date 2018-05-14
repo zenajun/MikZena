@@ -34,26 +34,25 @@ form {
     transition: all 0.5s;
   }    
   .selectPrice label {
-    margin: 10px;
-    padding: 10px;
-    width: 80px;
     @include fontSize(20);
-    @media (min-width: 640px) {
-    height: 80px;
-    margin: 5px 25px 15px;
     line-height: 40px;
+    @media (min-width: 640px) {
     }
   } 
-  .selectDrink label {
+  .selectDrink label,
+  .selectPrice label {
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.5s;
     border: 5px solid transparent;
     flex-basis: calc(50% - 30px);
     margin: 15px;
     padding: 10px;
+    height: 80px;
     @media (min-width: 640px) {
+      min-width: 80px;
       flex-basis: 0;
       margin: 5px 25px;
+      line-height: 40px;
     }
   } 
   .selectPrice input[type="radio"]:checked+label,

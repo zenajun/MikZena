@@ -105,7 +105,6 @@ app.displayInfo = function (store) {
 
     for (let i = 0; i < 3; i++) {
         const resultsContainer = `<div class="userResult">
-
                 <h4 class="userDrink">${app.selectedDrinks[i].name} <span>$${((app.selectedDrinks[i].price_in_cents) / 100).toFixed(2)}</span></h4>
                 <img src ="${app.selectedDrinks[i].image_url}" alt="${app.selectedDrinks[i].tags}">
                 <p class="drinkNotes"></p>
@@ -143,7 +142,6 @@ app.displayLocation = function() {
         `<div class="userResult">
         	<h2>Your store and results:</h2>
             <h5 class="userDrink">${app.storeLocation.address_line_1}, ${app.storeLocation.city}</h5>
-            <h5 class="userDrink">${app.storeLocation.city}</h5>
         </div>`
     $('section .locationResult').append(locationResultContainer);
     
