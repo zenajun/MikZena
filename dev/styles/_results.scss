@@ -12,10 +12,12 @@ section.result {
         }   
     } 
 }    
-      
+
+}        
+
 section.result {
     h2 {
-        @include fontSize(20);
+        @include fontSize(22);
         margin-top: 25px;      
     }
     .results-container {
@@ -31,9 +33,10 @@ section.result {
         }
         h4 {
             text-align: center;
-            @include fontSize(14);
+            @include fontSize(18);
         }
         h2 {
+
             @include fontSize(15);
             text-align: center;  
             @include fontSize(14);
@@ -47,6 +50,16 @@ section.result {
             text-align: center;
             font-weight: bold;
         }
+
+            @include fontSize(18);
+            text-align: center;    
+            font-weight: normal;  
+        }
+        p.userPrice {
+            text-align: center;
+            font-weight: bold;
+        }
+
         img {
             max-width: 250px;
             display: block;

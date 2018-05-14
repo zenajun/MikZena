@@ -145,7 +145,8 @@ form {
             box-shadow: none; }
   form input#postalCode {
     width: 100px;
-    margin-left: 5px; }
+    margin-left: 5px;
+    border: 2px solid #da810f; }
   form label[for="postalCode"] {
     -webkit-box-shadow: none;
             box-shadow: none; }
@@ -162,13 +163,22 @@ form {
   form .selectCity {
     padding-bottom: 15px; }
   form label {
-    margin: 10px;
-    padding: 10px;
     border: 5px solid transparent;
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
+  form .selectPrice label {
+    margin: 10px;
+    padding: 10px;
+    width: 80px;
+    font-size: 20px;
+    font-size: 2rem; }
+    @media (min-width: 640px) {
+      form .selectPrice label {
+        height: 80px;
+        margin: 5px 25px 15px;
+        line-height: 40px; } }
   form .selectDrink label {
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
@@ -217,12 +227,34 @@ section.result .results-container {
         width: 30%; } }
 
 section.result h2 {
+
   font-size: 20px;
   font-size: 2rem;
   margin-top: 25px; }
 
 section.result .results-container {
   margin: 0 auto; }
+
+  font-size: 22px;
+  font-size: 2.2rem;
+  margin-top: 25px; }
+
+section.result .results-container {
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
   @media (min-width: 680px) {
     section.result .results-container {
       display: -webkit-box;
@@ -235,21 +267,29 @@ section.result .results-container {
     width: 100%;
     padding: 10px 0; }
   section.result .results-container h4 {
+
     text-align: center;
     font-size: 14px;
     font-size: 1.4rem; }
   section.result .results-container h2 {
     font-size: 15px;
     font-size: 1.5rem;
+
+
     text-align: center;
-    font-size: 14px;
-    font-size: 1.4rem;
+    font-size: 18px;
+    font-size: 1.8rem; }
+  section.result .results-container h2 {
+    font-size: 18px;
+    font-size: 1.8rem;
     text-align: center;
     font-weight: normal; }
+
     @media (min-width: 1000px) {
       section.result .results-container h2 {
         font-size: 18px;
         font-size: 1.8rem; } }
+
   section.result .results-container p.userPrice {
     text-align: center;
     font-weight: bold; }
@@ -280,11 +320,19 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 30px; }
+
   header img.hero-img {
     display: block;
     max-width: 100%;
     margin: 0 auto;
     max-height: 200px; }
+
+
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+  max-height: 200px; }
 
 form {
   margin: 0 auto; }
@@ -293,27 +341,30 @@ h2 {
   font-family: 'Playfair Display', serif;
   text-align: center;
   margin: 0px;
-  font-size: 15px;
-  font-size: 1.5rem;
+  font-size: 22px;
+  font-size: 2.2rem;
   padding: 10px 20px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 .formInfo {
   padding-bottom: 15px; }
   .formInfo h3 {
-    font-size: 20px;
-    font-size: 2rem;
+    font-size: 24px;
+    font-size: 2.4rem;
     margin: 15px 0px 10px;
     padding: 15px 20px 10px;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 h5 {
-  font-size: 10px;
-  font-size: 1rem;
+  font-size: 18px;
+  font-size: 1.8rem;
   letter-spacing: 1px;
   margin: 0 auto;
   text-align: center;
   font-family: 'Montserrat', sans-serif; }
+  @media (min-width: 1000px) {
+    h5 {
+      max-width: 60%; } }
 
 .selectPrice h2 {
   margin-bottom: 20px; }
@@ -335,14 +386,15 @@ h5 {
   .selectPrice h2 .selectPrice h2 {
     margin-bottom: 20px; }
 
+
 .selectPrice h2 {
   margin-bottom: 20px; }
 
 footer {
   margin: 15px; }
   footer p {
-    font-size: 8px;
-    font-size: 0.8rem;
+    font-size: 16px;
+    font-size: 1.6rem;
     text-align: center;
     margin: 5px; }
 
