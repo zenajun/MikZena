@@ -48,7 +48,7 @@ h2 {
 	text-align: center;
 	margin: 0px;
 	@include fontSize(22);
-	padding: 10px 20px;
+	padding: 30px 0px 10px;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -72,28 +72,21 @@ h5 {
 		max-width: 60%;		
 	}
 }
-
-.selectPrice h2 {
-	margin-bottom: 20px;
-	.formInfo {
-		padding-bottom: 15px;
-		h3 {
-			@include fontSize(20);
-			margin: 15px 0px 10px;
-			padding: 15px 20px 10px;
-			text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-		}
+.formInfo {
+	padding-bottom: 15px;
+	h3 {
+		@include fontSize(20);
+		margin: 15px 0px 10px;
+		padding: 15px 20px 10px;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 	}
-	h5 {
-		@include fontSize(10);
-		letter-spacing: 1px;
-		margin: 0 auto;
-		text-align: center;
-		font-family: 'Montserrat', sans-serif;
-	}
-	.selectPrice h2 {
-		margin-bottom: 20px;
-	}
+}
+h5 {
+	@include fontSize(20);
+	letter-spacing: 1px;
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
 }
 footer {
 	margin: 15px;
@@ -101,6 +94,14 @@ footer {
 		@include fontSize(16);
 		text-align: center;
 		margin: 5px;
+	}
+	a {
+		text-decoration: none; 
+		color: black;
+		font-weight: bold;
+	}
+	a:hover {
+		color: $primary;
 	}
 }
 
