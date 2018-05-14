@@ -210,8 +210,7 @@ input[type=submit] {
     border: 5px solid #da810f; }
 
 section.result .results-container {
-  margin: 0 auto;
-  padding-bottom: 100px; }
+  margin: 0 auto; }
   @media (min-width: 1000px) {
     section.result .results-container {
       display: -webkit-box;
@@ -227,34 +226,13 @@ section.result .results-container {
         width: 30%; } }
 
 section.result h2 {
-
-  font-size: 20px;
-  font-size: 2rem;
-  margin-top: 25px; }
-
-section.result .results-container {
-  margin: 0 auto; }
-
   font-size: 22px;
   font-size: 2.2rem;
   margin-top: 25px; }
 
 section.result .results-container {
   margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
+  padding-top: 20px; }
   @media (min-width: 680px) {
     section.result .results-container {
       display: -webkit-box;
@@ -267,32 +245,29 @@ section.result .results-container {
     width: 100%;
     padding: 10px 0; }
   section.result .results-container h4 {
-
     text-align: center;
-    font-size: 14px;
-    font-size: 1.4rem; }
-  section.result .results-container h2 {
-    font-size: 15px;
-    font-size: 1.5rem;
-
-
-    text-align: center;
+    margin: 10px 0;
     font-size: 18px;
     font-size: 1.8rem; }
   section.result .results-container h2 {
-    font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 15px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem;
     text-align: center;
     font-weight: normal; }
-
     @media (min-width: 1000px) {
       section.result .results-container h2 {
         font-size: 18px;
         font-size: 1.8rem; } }
-
   section.result .results-container p.userPrice {
     text-align: center;
-    font-weight: bold; }
+    font-weight: bold;
+    font-size: 18px;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: normal; }
   section.result .results-container img {
     max-width: 250px;
     display: block;
@@ -320,13 +295,11 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 30px; }
-
   header img.hero-img {
     display: block;
     max-width: 100%;
     margin: 0 auto;
     max-height: 200px; }
-
 
 img {
   display: block;
@@ -366,29 +339,22 @@ h5 {
     h5 {
       max-width: 60%; } }
 
-.selectPrice h2 {
-  margin-bottom: 20px; }
-  .selectPrice h2 .formInfo {
-    padding-bottom: 15px; }
-    .selectPrice h2 .formInfo h3 {
-      font-size: 20px;
-      font-size: 2rem;
-      margin: 15px 0px 10px;
-      padding: 15px 20px 10px;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-  .selectPrice h2 h5 {
-    font-size: 10px;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif; }
-  .selectPrice h2 .selectPrice h2 {
-    margin-bottom: 20px; }
+.formInfo {
+  padding-bottom: 15px; }
+  .formInfo h3 {
+    font-size: 20px;
+    font-size: 2rem;
+    margin: 15px 0px 10px;
+    padding: 15px 20px 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
-
-.selectPrice h2 {
-  margin-bottom: 20px; }
+h5 {
+  font-size: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; }
 
 footer {
   margin: 15px; }
