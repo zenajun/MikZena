@@ -132,6 +132,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   box-sizing: border-box; }
 
 form {
+  margin: 0 auto;
   width: 100%;
   font-family: 'Montserrat', sans-serif;
   text-align: center; }
@@ -276,6 +277,11 @@ body {
   font-size: 16px;
   font-size: 1.6rem; }
 
+@media (min-width: 1000px) {
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto; } }
+
 header {
   background: black;
   height: 100%;
@@ -296,15 +302,6 @@ header {
     margin: 0 auto;
     max-height: 200px; }
 
-img {
-  display: block;
-  max-width: 100%;
-  margin: 0 auto;
-  max-height: 200px; }
-
-form {
-  margin: 0 auto; }
-
 h2 {
   font-family: 'Playfair Display', serif;
   text-align: center;
@@ -324,8 +321,8 @@ h2 {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 h5 {
-  font-size: 18px;
-  font-size: 1.8rem;
+  font-size: 20px;
+  font-size: 2rem;
   letter-spacing: 1px;
   margin: 0 auto;
   text-align: center;
@@ -333,23 +330,6 @@ h5 {
   @media (min-width: 1000px) {
     h5 {
       max-width: 60%; } }
-
-.formInfo {
-  padding-bottom: 15px; }
-  .formInfo h3 {
-    font-size: 20px;
-    font-size: 2rem;
-    margin: 15px 0px 10px;
-    padding: 15px 20px 10px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-
-h5 {
-  font-size: 20px;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif; }
 
 footer {
   margin: 15px; }
@@ -364,8 +344,3 @@ footer {
     font-weight: bold; }
   footer a:hover {
     color: #da810f; }
-
-@media (min-width: 1000px) {
-  .wrapper {
-    max-width: 1000px;
-    margin: 0 auto; } }
