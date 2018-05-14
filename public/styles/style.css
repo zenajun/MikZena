@@ -169,17 +169,11 @@ form {
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
   form .selectPrice label {
-    margin: 10px;
-    padding: 10px;
-    width: 80px;
     font-size: 20px;
-    font-size: 2rem; }
-    @media (min-width: 640px) {
-      form .selectPrice label {
-        height: 80px;
-        margin: 5px 25px 15px;
-        line-height: 40px; } }
-  form .selectDrink label {
+    font-size: 2rem;
+    line-height: 40px; }
+  form .selectDrink label,
+  form .selectPrice label {
     -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     -webkit-transition: all 0.5s;
@@ -188,12 +182,16 @@ form {
     -ms-flex-preferred-size: calc(50% - 30px);
         flex-basis: calc(50% - 30px);
     margin: 15px;
-    padding: 10px; }
+    padding: 10px;
+    height: 80px; }
     @media (min-width: 640px) {
-      form .selectDrink label {
+      form .selectDrink label,
+      form .selectPrice label {
+        min-width: 80px;
         -ms-flex-preferred-size: 0;
             flex-basis: 0;
-        margin: 5px 25px; } }
+        margin: 5px 25px;
+        line-height: 40px; } }
   form .selectPrice input[type="radio"]:checked + label,
   form .selectDrink input[type="radio"]:checked + label {
     border: 5px solid #da810f; }
@@ -231,8 +229,12 @@ section.result h2 {
   margin-top: 25px; }
 
 section.result .results-container {
+<<<<<<< HEAD
   margin: 0 auto;
   padding-top: 20px; }
+=======
+  margin: 0 auto; }
+>>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
   @media (min-width: 680px) {
     section.result .results-container {
       display: -webkit-box;
@@ -246,7 +248,10 @@ section.result .results-container {
     padding: 10px 0; }
   section.result .results-container h4 {
     text-align: center;
+<<<<<<< HEAD
     margin: 10px 0;
+=======
+>>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
     font-size: 18px;
     font-size: 1.8rem; }
   section.result .results-container h2 {
@@ -316,7 +321,7 @@ h2 {
   margin: 0px;
   font-size: 22px;
   font-size: 2.2rem;
-  padding: 10px 20px;
+  padding: 30px 0px 10px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 .formInfo {
@@ -349,8 +354,13 @@ h5 {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 h5 {
+<<<<<<< HEAD
   font-size: 10px;
   font-size: 1rem;
+=======
+  font-size: 20px;
+  font-size: 2rem;
+>>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
   letter-spacing: 1px;
   margin: 0 auto;
   text-align: center;
@@ -363,6 +373,12 @@ footer {
     font-size: 1.6rem;
     text-align: center;
     margin: 5px; }
+  footer a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold; }
+  footer a:hover {
+    color: #da810f; }
 
 @media (min-width: 1000px) {
   .wrapper {

@@ -106,7 +106,11 @@ app.displayInfo = function (store) {
     $('.result .results-container').empty();
 
     for (var i = 0; i < 3; i++) {
+<<<<<<< HEAD
         var resultsContainer = '<div class="userResult">\n\n                <h4 class="userDrink">' + app.selectedDrinks[i].name + '</h4>\n                <h4>$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</h4>\n                <img src ="' + app.selectedDrinks[i].image_url + '" alt="' + app.selectedDrinks[i].tags + '">\n                <p class="drinkNotes"></p>\n            </div>';
+=======
+        var resultsContainer = '<div class="userResult">\n                <h4 class="userDrink">' + app.selectedDrinks[i].name + ' <span>$' + (app.selectedDrinks[i].price_in_cents / 100).toFixed(2) + '</span></h4>\n                <img src ="' + app.selectedDrinks[i].image_url + '" alt="' + app.selectedDrinks[i].tags + '">\n                <p class="drinkNotes"></p>\n            </div>';
+>>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
         $('.result .results-container').append(resultsContainer);
     }
 };
@@ -136,7 +140,11 @@ app.getStores = function (geo) {
 
 app.displayLocation = function () {
     $('section .locationResult').empty();
+<<<<<<< HEAD
     var locationResultContainer = '<div class="userResult">\n        \t<h2>Your store and results:</h2>\n            <h5 class="userDrink">' + app.storeLocation.address_line_1 + ', ' + app.storeLocation.city + '</h5>            \n        </div>';
+=======
+    var locationResultContainer = '<div class="userResult">\n        \t<h2>Your store and results:</h2>\n            <h5 class="userDrink">' + app.storeLocation.address_line_1 + ', ' + app.storeLocation.city + '</h5>\n        </div>';
+>>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
     $('section .locationResult').append(locationResultContainer);
 
     $('html, body').animate({
