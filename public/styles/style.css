@@ -217,46 +217,28 @@ section.result .results-container {
         width: 30%; } }
 
 section.result h2 {
-section.result section.result h2 {
   font-size: 20px;
   font-size: 2rem;
   margin-top: 25px; }
 
-
 section.result .results-container {
-
-section.result section.result .results-container {
-
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
+  margin: 0 auto; }
   @media (min-width: 680px) {
-    section.result section.result .results-container {
+    section.result .results-container {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -ms-flex-wrap: row wrap;
           flex-wrap: row wrap; } }
-  section.result section.result .results-container .userResult {
+  section.result .results-container .userResult {
     margin: 0 auto;
     width: 100%;
     padding: 10px 0; }
-  section.result section.result .results-container h4 {
+  section.result .results-container h4 {
     text-align: center;
     font-size: 14px;
     font-size: 1.4rem; }
-  section.result section.result .results-container h2 {
+  section.result .results-container h2 {
     font-size: 15px;
     font-size: 1.5rem;
     text-align: center;
@@ -265,17 +247,13 @@ section.result section.result .results-container {
     text-align: center;
     font-weight: normal; }
     @media (min-width: 1000px) {
-
       section.result .results-container h2 {
-
-      section.result section.result .results-container h2 {
-
         font-size: 18px;
         font-size: 1.8rem; } }
-  section.result section.result .results-container p.userPrice {
+  section.result .results-container p.userPrice {
     text-align: center;
     font-weight: bold; }
-  section.result section.result .results-container img {
+  section.result .results-container img {
     max-width: 250px;
     display: block;
     margin: 0 auto;
@@ -287,7 +265,6 @@ html {
 body {
   font-size: 16px;
   font-size: 1.6rem; }
-
 
 header {
   background: black;
@@ -303,7 +280,7 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 30px; }
-  header img {
+  header img.hero-img {
     display: block;
     max-width: 100%;
     margin: 0 auto;
@@ -340,54 +317,23 @@ h5 {
 
 .selectPrice h2 {
   margin-bottom: 20px; }
-
-  body header {
-    background-color: black;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    padding: 30px; }
-    body header img {
-      display: block;
-      max-width: 100%;
-      margin: 0 auto;
-      max-height: 200px; }
-  body form {
-    margin: 0 auto; }
-  body h2 {
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    margin: 0px;
-    font-size: 15px;
-    font-size: 1.5rem;
-    padding: 10px 20px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-  body .formInfo {
+  .selectPrice h2 .formInfo {
     padding-bottom: 15px; }
-    body .formInfo h3 {
+    .selectPrice h2 .formInfo h3 {
       font-size: 20px;
       font-size: 2rem;
       margin: 15px 0px 10px;
       padding: 15px 20px 10px;
       text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
-  body h5 {
+  .selectPrice h2 h5 {
     font-size: 10px;
     font-size: 1rem;
     letter-spacing: 1px;
     margin: 0 auto;
     text-align: center;
     font-family: 'Montserrat', sans-serif; }
-  body .selectPrice h2 {
+  .selectPrice h2 .selectPrice h2 {
     margin-bottom: 20px; }
-
 
 .selectPrice h2 {
   margin-bottom: 20px; }
