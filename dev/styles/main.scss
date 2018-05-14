@@ -11,7 +11,6 @@ $primary: #da810f;
 html {
 	font-size: 62.5%;
 }
-
 body {	
 	@include fontSize(16);	
 }
@@ -23,12 +22,12 @@ header {
 	flex-direction: row;
 	align-items: center;
 	padding: 30px;
-	img {
-		display: block;
-		max-width: 100%;
-		margin: 0 auto;
-		max-height: 200px;
-	}
+}
+img {
+	display: block;
+	max-width: 100%;
+	margin: 0 auto;
+	max-height: 200px;
 }
 
 form {
@@ -39,7 +38,7 @@ h2 {
 	font-family: 'Playfair Display', serif;
 	text-align: center;
 	margin: 0px;
-	@include fontSize(15);
+	@include fontSize(22);
 	padding: 10px 20px;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
@@ -47,7 +46,7 @@ h2 {
 .formInfo {
 	padding-bottom: 15px;
 	h3 {
-		@include fontSize(20);
+		@include fontSize(24);
 		margin: 15px 0px 10px;
 		padding: 15px 20px 10px;
 		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
@@ -55,11 +54,14 @@ h2 {
 }
 
 h5 {
-	@include fontSize(10);
+	@include fontSize(18);
 	letter-spacing: 1px;
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
+	@media (min-width: 1000px) {
+		max-width: 60%;		
+	}
 }
 
 .selectPrice h2 {
@@ -84,13 +86,10 @@ h5 {
 		margin-bottom: 20px;
 	}
 }
-.selectPrice h2 {
-	margin-bottom: 20px;
-}
 footer {
 	margin: 15px;
 	p {
-		@include fontSize(8);
+		@include fontSize(16);
 		text-align: center;
 		margin: 5px;
 	}

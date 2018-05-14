@@ -14,6 +14,7 @@ form {
 	input#postalCode {
     width: 100px;
     margin-left: 5px;
+    border: 2px solid $primary;
   }
   label[for="postalCode"] {
     box-shadow: none;
@@ -28,13 +29,21 @@ form {
     padding-bottom: 15px;
   }
   label {
-    margin: 10px;
-    padding: 10px;
     border: 5px solid transparent;
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.5s;
-  }     
-
+  }    
+  .selectPrice label {
+    margin: 10px;
+    padding: 10px;
+    width: 80px;
+    @include fontSize(20);
+    @media (min-width: 640px) {
+    height: 80px;
+    margin: 5px 25px 15px;
+    line-height: 40px;
+    }
+  } 
   .selectDrink label {
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.5s;
