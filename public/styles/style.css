@@ -207,8 +207,24 @@ input[type=submit] {
   input[type=submit]:hover {
     border: 5px solid #da810f; }
 
+section.result h2 {
+  font-size: 22px;
+  font-size: 2.2rem;
+  margin-top: 25px; }
+
 section.result .results-container {
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-top: 20px; }
+  @media (min-width: 680px) {
+    section.result .results-container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: row wrap;
+          flex-wrap: row wrap;
+      -webkit-box-align: end;
+          -ms-flex-align: end;
+              align-items: flex-end; } }
   @media (min-width: 1000px) {
     section.result .results-container {
       display: -webkit-box;
@@ -216,42 +232,16 @@ section.result .results-container {
       display: flex;
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
-              justify-content: space-between;
-      -webkit-box-align: end;
-          -ms-flex-align: end;
-              align-items: flex-end; }
+              justify-content: space-between; }
       section.result .results-container .userResult {
         width: 30%; } }
-
-section.result h2 {
-  font-size: 22px;
-  font-size: 2.2rem;
-  margin-top: 25px; }
-
-section.result .results-container {
-<<<<<<< HEAD
-  margin: 0 auto;
-  padding-top: 20px; }
-=======
-  margin: 0 auto; }
->>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
-  @media (min-width: 680px) {
-    section.result .results-container {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: row wrap;
-          flex-wrap: row wrap; } }
   section.result .results-container .userResult {
     margin: 0 auto;
     width: 100%;
     padding: 10px 0; }
   section.result .results-container h4 {
     text-align: center;
-<<<<<<< HEAD
     margin: 10px 0;
-=======
->>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
     font-size: 18px;
     font-size: 1.8rem; }
   section.result .results-container h2 {
@@ -354,13 +344,8 @@ h5 {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); }
 
 h5 {
-<<<<<<< HEAD
-  font-size: 10px;
-  font-size: 1rem;
-=======
   font-size: 20px;
   font-size: 2rem;
->>>>>>> 5e7de7182cc521a8950d9e73940157146a3c8152
   letter-spacing: 1px;
   margin: 0 auto;
   text-align: center;
