@@ -22,12 +22,21 @@ header {
 	flex-direction: row;
 	align-items: center;
 	padding: 30px;
+
+	img.hero-img {
+		display: block;
+		max-width: 100%;
+		margin: 0 auto;
+		max-height: 200px;
+	}
+
 }
 img {
 	display: block;
 	max-width: 100%;
 	margin: 0 auto;
 	max-height: 200px;
+
 }
 
 form {

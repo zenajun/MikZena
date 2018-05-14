@@ -11,7 +11,10 @@ section.result {
             }
         }   
     } 
-}         
+}    
+
+}        
+
 section.result {
     h2 {
         @include fontSize(22);
@@ -19,10 +22,6 @@ section.result {
     }
     .results-container {
         margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
         @media (min-width: 680px) {
             display: flex;
             flex-wrap: row wrap;            
@@ -37,6 +36,21 @@ section.result {
             @include fontSize(18);
         }
         h2 {
+
+            @include fontSize(15);
+            text-align: center;  
+            @include fontSize(14);
+            text-align: center;    
+            font-weight: normal;  
+            @media (min-width: 1000px) {
+                @include fontSize(18);
+            }  
+        }
+        p.userPrice {
+            text-align: center;
+            font-weight: bold;
+        }
+
             @include fontSize(18);
             text-align: center;    
             font-weight: normal;  
@@ -45,6 +59,7 @@ section.result {
             text-align: center;
             font-weight: bold;
         }
+
         img {
             max-width: 250px;
             display: block;
@@ -53,3 +68,4 @@ section.result {
         }
     }
 }
+

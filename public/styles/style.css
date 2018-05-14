@@ -227,6 +227,14 @@ section.result .results-container {
         width: 30%; } }
 
 section.result h2 {
+
+  font-size: 20px;
+  font-size: 2rem;
+  margin-top: 25px; }
+
+section.result .results-container {
+  margin: 0 auto; }
+
   font-size: 22px;
   font-size: 2.2rem;
   margin-top: 25px; }
@@ -246,6 +254,7 @@ section.result .results-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
+
   @media (min-width: 680px) {
     section.result .results-container {
       display: -webkit-box;
@@ -258,6 +267,15 @@ section.result .results-container {
     width: 100%;
     padding: 10px 0; }
   section.result .results-container h4 {
+
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem; }
+  section.result .results-container h2 {
+    font-size: 15px;
+    font-size: 1.5rem;
+
+
     text-align: center;
     font-size: 18px;
     font-size: 1.8rem; }
@@ -266,6 +284,12 @@ section.result .results-container {
     font-size: 1.8rem;
     text-align: center;
     font-weight: normal; }
+
+    @media (min-width: 1000px) {
+      section.result .results-container h2 {
+        font-size: 18px;
+        font-size: 1.8rem; } }
+
   section.result .results-container p.userPrice {
     text-align: center;
     font-weight: bold; }
@@ -296,6 +320,13 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 30px; }
+
+  header img.hero-img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    max-height: 200px; }
+
 
 img {
   display: block;
@@ -354,6 +385,10 @@ h5 {
     font-family: 'Montserrat', sans-serif; }
   .selectPrice h2 .selectPrice h2 {
     margin-bottom: 20px; }
+
+
+.selectPrice h2 {
+  margin-bottom: 20px; }
 
 footer {
   margin: 15px; }
