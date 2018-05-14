@@ -136,7 +136,7 @@ app.getStores = function (geo) {
 
 app.displayLocation = function () {
     $('section .locationResult').empty();
-    var locationResultContainer = '<div class="userResult">\n        \t<h2>Your store and results:</h2>\n            <h5 class="userDrink">' + app.storeLocation.address_line_1 + ', ' + app.storeLocation.city + '</h5>\n            <h5 class="userDrink">' + app.storeLocation.city + '</h5>\n        </div>';
+    var locationResultContainer = '<div class="userResult">\n        \t<h2>Your store and results:</h2>\n            <h5 class="userDrink">' + app.storeLocation.address_line_1 + ', ' + app.storeLocation.city + '</h5>            \n        </div>';
     $('section .locationResult').append(locationResultContainer);
 
     $('html, body').animate({
